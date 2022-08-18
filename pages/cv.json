@@ -9,12 +9,14 @@
         "heading": "Marginalen Bank 2016-10 - ongoing",
         "preamble": "Solution architect and lead programmer in the project of development their web solutions",
         "tools": [
-          "Visual Studio 2015",
-          "Microsoft .NET Framework 4.6.1",
+          "Visual Studio 2019",
+          "Microsoft .NET Framework 4.7",
           "MVC 5",
-          "EPiServer CMS 10",
+          "EPiServer CMS 11",
           "Test driven development (TDD)",
           "JavaScript",
+		  "Vue",
+		  "Knockout",
           "Responsive design",
           "Single-page application",
           "BankID (mobile, card and file)"
