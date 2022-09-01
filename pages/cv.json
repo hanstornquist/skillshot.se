@@ -2,11 +2,26 @@
   "heading": "Curriculum vitae",
   "project": {
     "heading": "Projects",
-    "projects": [
+    "projects": [{
+        "published" :  true,
+        "href": "https://www.sas.se",
+        "heading": "SAS 2022-08 - Ongoing",
+        "preamble": "Developer in the project of development their web solutions for manageing bookings and checkins",
+        "tools": [
+          "IntelliJ",
+          "Java 8, Java 17",
+          "Maven",
+          "Test driven development (TDD)",
+          "JavaScript",
+		  "React",
+          "Responsive design",
+          "Single-page application",
+        ]
+      },
       {
         "published" :  true,
         "href": "https://www.marginalen.se",
-        "heading": "Marginalen Bank 2016-10 - ongoing",
+        "heading": "Marginalen Bank 2016-10 - 2022-08",
         "preamble": "Solution architect and lead programmer in the project of development their web solutions",
         "tools": [
           "Visual Studio 2019",
