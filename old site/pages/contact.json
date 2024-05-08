@@ -1,0 +1,28 @@
+﻿{
+  "heading": "Contact me",
+  "placeholders": {
+    "email": "Your e-mail",
+    "subject": "Subject",
+    "message": "A nice message to me"
+  },
+  "button": "Send message",
+  "socialMedia": [
+    {
+      "url": "https://www.linkedin.com/pub/hans-törnquist/54/352/14",
+      "icon": "linkedIn"
+    },
+    {
+      "url": "https://twitter.com/hanstornquist",
+      "icon": "twittter"
+    },
+    {
+      "url": "http://www.thingiverse.com/hanst/",
+      "icon": "thingiverse"
+    },
+    {
+      "url": "http://world.episerver.com/System/Users-and-profiles/Community-Profile-Card/?userid=1d11f578-af0e-dc11-9e98-0018717a8c82",
+      "icon": "episerver"
+    }
+  ]
+}
+
