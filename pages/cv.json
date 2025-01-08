@@ -8,6 +8,8 @@
         "heading": "SAS 2022-08 - Ongoing",
         "preamble": "Developer in the team working with their web solutions for managing bookings and check in",
         "tools": [
+	  "NodeJS",
+	  "Kubernetes",
           "IntelliJ",
           "Java 8, Java 17",
           "Maven",
@@ -27,7 +29,7 @@
           "Visual Studio 2019",
           "Microsoft .NET Framework 4.7",
           "MVC 5",
-          "EPiServer CMS 11",
+          "EPiServer/Optimizely CMS",
           "Test driven development (TDD)",
           "JavaScript",
 		  "Vue",
