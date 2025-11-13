@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en" data-culture="en_US"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en" data-culture="en_US">
+<!--<![endif]-->
+<head>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Hans Törnquist</title>
+    <meta name="description" content="Hans Törnquist, system architect specialized in developing large corporate web sitesand Internet banking using EPiServer CMS">
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="stylesheets/base.css">
+    <link rel="stylesheet" href="stylesheets/skeleton.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="stylesheets/layout.css">
+    <link rel="stylesheet" href="stylesheets/Main.css">
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet"> 
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+</head>
+<body>
+    <header class="sixteen columns head">
+        <div class="container">
+            <div class="sixteen columns">
+                <h1>Hans Törnquist</h1>
+                <nav>
+                    <ul id="menu" class="tabs">
+                        <li><a href="#start" class="active">Start</a> </li>
+                        <li><a href="#cv">CV</a> </li>
+                        <li><a href="#contact">Contact</a> </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <article>
+        <div class="container">
+            <div class="sixteen columns" id="contentArea">
+            </div>
+        </div>
+    </article>
+    <footer class="footer">
+        <div class="container">
+            <div class="sixteen columns">
+                <a href="https://www.linkedin.com/in/hans-t%C3%B6rnquist-01435254/" target="_blank"><i class="fa fa-linkedin-square fa-3x"></i></a>
+                <a href="https://twitter.com/hanstornquist" target="_blank"><i class="fa fa-twitter fa-3x"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="javascripts/tabs.js"></script>
+
+    <script data-template-cv type="text/html">
+        <div>
+            <h2>{{heading}}</h2>
+            {{#project}}
+            {{#projects}}
+            {{#published}}
+            <a href="{{href}}" target="_blank">
+                <h4>{{heading}}</h4>
+            </a>
+            <p>{{preamble}}</p>
+            <h5>Tools</h5>
+            <ul>
+                {{#tools}}
+                <li>
+                    {{.}}
+                </li>
+                {{/tools}}
+            </ul>
+            {{/published}}
+            {{/projects}}
+            {{/project}}
+
+            {{#employment}}
+            <h3>{{heading}}</h3>
+            {{#employments}}
+            <h4>{{date}}</h4>
+            <p class="ingress">{{heading}}</p>
+            <p>{{preamble}}</p>
+            {{/employments}}
+            {{/employment}}
+
+            {{#education}}
+            <h3>{{heading}}</h3>
+            {{#educations}}
+            <h4>{{date}}</h4>
+            <p class="ingress">{{heading}}</p>
+            <p>{{preamble}}</p>
+            {{/educations}}
+            {{/education}}
+
+            {{#special}}
+            <h3>{{heading}}</h3>
+            <ul>
+                {{#specials}}
+                <li>{{.}}</li>
+                {{/specials}}
+            </ul>
+            {{/special}}
+        </div>
+    </script>
+    <script data-template-start type="text/html">
+        <h2>{{heading}}</h2>
+        <h4>{{preamble}}</h4>
+        <p>{{{mainBody}}}</p>
+    </script>
+
+    <script data-template-contact type="text/html">
+        <div>
+            <h2>{{heading}}</h2>
+
+        </div>
+    </script>
+</body>
+</html>

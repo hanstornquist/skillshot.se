@@ -1,0 +1,251 @@
+{
+  "heading": "Curriculum vitae",
+  "project": {
+    "heading": "Projects",
+    "projects": [{
+        "published" :  true,
+        "href": "https://www.sas.se",
+        "heading": "SAS 2022-08 - Ongoing",
+        "preamble": "Developer in the team working with their web solutions for managing bookings and check in",
+        "tools": [
+	  "NodeJS",
+	  "Kubernetes",
+          "IntelliJ",
+          "Java 8, Java 17",
+          "Maven",
+          "Test driven development (TDD)",
+          "JavaScript",
+	  "React",
+          "Responsive design",
+          "Single-page application"
+        ]
+      },
+      {
+        "published" :  true,
+        "href": "https://www.marginalen.se",
+        "heading": "Marginalen Bank 2016-10 - 2022-08",
+        "preamble": "Solution architect and lead programmer in the project of development their web solutions",
+        "tools": [
+          "Visual Studio 2019",
+          "Microsoft .NET Framework 4.7",
+          "MVC 5",
+          "EPiServer/Optimizely CMS",
+          "Test driven development (TDD)",
+          "JavaScript",
+		  "Vue",
+		  "Knockout",
+          "Responsive design",
+          "Single-page application",
+          "BankID (mobile, card and file)"
+        ]
+      },
+      {
+        "published" :  true,
+        "href": "https://santanderconsumer.se",
+        "heading": "Santander Consumer Bank 2015-12 - 2016-10",
+        "preamble": "Solution architect in the project of development new functionallity on their Internet banking solution",
+        "tools": [
+          "BankID (mobile, card and file)",
+          "Visual Studio 2012",
+          "Microsoft .NET Framework 4.5",
+          "MVC 4",
+          "EPiServer CMS 8",
+          "Test driven development (TDD)",
+          "JavaScript",
+          "Responsive design",
+          "Single-page application"
+        ]
+      },
+      {
+        "published" :  true,
+        "href": "http://www.bemz.com/",
+        "heading": "BEMZ 2015-08 - 2015-12",
+        "preamble": "System developer in the project of the development of a new e-commerce solution",
+        "tools": [
+          "Visual Studio 2015",
+          "Microsoft .NET Framework 4.5",
+          "MVC 4.5",
+          "EPiServer CMS 7.5",
+          "EPiServer Commerce 8",
+          "EPiServer find",
+          "Test driven development (TDD)",
+          "JavaScript",
+          "Responsive design"
+        ]
+      },
+      {
+        "published" :  true,
+        "href": "http://www.transdev.se/",
+        "heading": "Transdev 2015-03 to 2015-08",
+        "preamble": "Tech lead in the project of the development of a new intranet",
+        "tools": [
+          "Visual Studio 2015",
+          "Microsoft .NET Framework 4.5",
+          "MVC 4.5",
+          "EPiServer CMS 7.5",
+          "EPiServer find",
+          "Test driven development (TDD)",
+          "JavaScript",
+          "Responsive design",
+          "Single-page application"
+        ]
+      },
+      {
+        "published" :  true,
+        "href": "http://www.icagruppen.se",
+        "heading": "ICA Gruppen 2014-01 to 2014-03",
+        "preamble": "Tech lead in the project of the development of the new corprate web site",
+        "tools": [
+          "Visual Studio 2012",
+          "Microsoft .NET Framework 4.5",
+          "MVC 4",
+          "EPiServer CMS 7.5",
+          "Test driven development (TDD)",
+          "JavaScript",
+          "Responsive design",
+          "Single-page application"
+        ]
+      },
+      {
+        "published" :  true,
+        "href": "http://www.landshypotek.se",
+        "heading": "Landshypotek 2014-01 to 2014-03",
+        "preamble": "Tech lead in the development of a new web site",
+        "tools": [
+          "Visual Studio 2012",
+          "Microsoft .NET Framework 4.5",
+          "MVC 4",
+          "EPiServer CMS 7.5",
+          "JavaScript",
+          "Responsive design",
+          "Single-page application"
+        ]
+      },
+      {
+        "published" :  true,
+        "href": "https://santanderconsumer.se",
+        "heading": "Santander Consumer Bank 2013-09 to 2015-03",
+        "preamble": "Solution architect in the project of development of a new Internet banking solution for their customers and upgrading of their server park to EPiServer CMS 7",
+        "tools": [
+          "BankID (mobile, card and file)",
+          "Visual Studio 2012",
+          "Microsoft .NET Framework 4.5",
+          "MVC 4",
+          "EPiServer CMS 7.1",
+          "Test driven development (TDD)",
+          "JavaScript",
+          "Responsive design",
+          "Single-page application"
+        ]
+      },
+      {
+        "published" :  true,
+        "href": "http://kdapotek.se",
+        "heading": "Kronans Apotek 2013-09 to 2015-02",
+        "preamble": "Tech lead in the redesign project and integration between 1177 Vårdguinden and Kronans Apotek",
+        "tools": [
+          "Visual Studio 2012",
+          "Microsoft .NET Framework 3.5",
+          "EPiServer CMS 6R2",
+          "Page type builder",
+          "Atom XML-feed"
+        ]
+      },
+      {
+        "published" :  true,
+        "href": "http://www.riksbyggen.se",
+        "heading": "Riksbyggen 2011-09 to 2013-09",
+        "preamble": "Extranet for all customers to Riksbyggen, in this project I started as a system developer and ended as tech lead",
+        "tools": [
+          "Visual Studio 10",
+          "Microsoft .NET Framework 4",
+          "EPiServer CMS 6R2",
+          "Page type builder",
+          "JavaScript using jQuery"
+        ]
+      },
+      {
+        "published" :  true,
+        "href": "http://www.jm.se",
+        "heading": "JM AB 2007-03 to 2011-08",
+        "preamble": "System developer with architectural responsibility for all the websites in the corporate group",
+        "tools": [
+          "Visual Studio 10",
+          "Microsoft .NET Framework 2, 3.5 och 4",
+          "EPiServer Enterprise Edition 4.61, 4.62, CMS 5 R2 och CMS 6",
+          "Webtrends v8",
+          "Microsoft Server 2005 och 2008",
+          "Microsoft SQL-server 2005",
+          "Load balancing using F5 BIG-IP",
+          "Capitex",
+          "Scrum"
+        ],
+        "footer": "I have also designed JM's fully redundant server platform for all the sites designed for minimum downtime."
+      }
+    ]
+  },
+  "employment": {
+    "heading": "Employments",
+    "employments": [
+	  {
+        "date": "2016-04",
+        "heading": "Founder and owner, SkillShot AB",
+        "preamble": "IT consultant within Solution architecture and development using EPiServer and .net"
+      },
+      {
+        "date": "2015-08 to 2016-04",
+        "heading": "Solution architect, Making Waves Sweden",
+        "preamble": "IT consultant within Solution architecture and development using EPiServer and .net"
+      },
+      {
+        "date": "2011-09 to 2015-08",
+        "heading": "Solution architect, Know IT Reaktor Stockholm AB",
+        "preamble": "IT consultant within Solution architecture and development using EPiServer and .net"
+      },
+      {
+        "date": "2007-03 to 2011-08",
+        "heading": "Solution architect/developer, JM AB, Stockholm"
+      },
+      {
+        "date": "2006-10 till 2007-03",
+        "heading": "Technician, Selecta AB, Stockholm",
+        "preamble": "Technician with responsibilities for all Selectas equipment in Kungsholmen, Stockholm"
+      },
+      {
+        "date": "2003-06 till 2006-10",
+        "heading": "Sails person, Clas Ohlson AB Gallerian, Hamngatan Stockholm",
+        "preamble": "Full-and part-time employee with duties consisted of general shop work such as cashier, information personal, customer service, counter sales and replenishment."
+      }
+    ]
+  },
+  "education": {
+    "heading": "Educations",
+    "educations": [
+      {
+        "date": "2001 - 2005",
+        "heading": "Master of Science, IT-program 180p, KTH, Stockholm"
+      },
+      {
+        "date": "2000 - 2001",
+        "heading": "Technical base year, KTH, Stockholm",
+        "preamble": "Supplementation for further studies in Master of Science programs at KTH"
+      },
+      {
+        "date": "2000",
+        "heading": "Statistics 20p, Stockholm University"
+      }
+    ]
+  },
+  "special": {
+    "heading": "Special skills",
+    "specials": [
+      "Special expertise in Microsoft. NET Framework and EPiServer",
+      "Has extensive experience of providers within .Net",
+      "Has extensive experience in LINQ.",
+      "Has extensive experience in Entity Framework 4",
+      "Has extensive experience of EPiServer CMS Enterprise solutions and custom page providers in a multi-site environment.",
+      "Has extensive experience using Page Builder Type.",
+      "More than ten years. experience in designing laser shows"
+    ]
+  }
+}
