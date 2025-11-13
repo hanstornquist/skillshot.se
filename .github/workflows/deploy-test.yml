@@ -40,11 +40,11 @@ jobs:
 
   deploy:
     environment:
-      name: test
+      name: dev.skillshot.se
       url: ${{ steps.deployment.outputs.page_url }}
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to GitHub Pages (test)
+      - name: Deploy to GitHub Pages (dev.skillshot.se)
         id: deployment
         uses: actions/deploy-pages@v4
