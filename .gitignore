@@ -3,6 +3,7 @@ node_modules/
 
 # build output
 dist/
+vite.config.js.timestamp-*.mjs
 
 # environment files
 .env.local
