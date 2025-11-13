@@ -1,4 +1,4 @@
-name: Deploy to Loopia (skillshot.se)
+name: Deploy PROD (skillshot.se)
 
 on:
   workflow_dispatch:

@@ -1,4 +1,4 @@
-name: Deploy to Loopia (dev.skillshot.se)
+name: Deploy TEST (dev.skillshot.se)
 
 on:
   push:
