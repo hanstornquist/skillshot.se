@@ -2,15 +2,32 @@
 
 ## Automated Loopia deploy (GitHub Actions)
 
-1. Add repository secrets with your Loopia FTP details:
-   - `FTP_HOST` – the FTP server hostname (for example `ftp.loopia.se`)
-   - `FTP_USERNAME` – the FTP username
-   - `FTP_PASSWORD` – the FTP password
-   - `FTP_PATH` – remote directory where the site should be published (for example `/httpdocs/`)
-   - Optional: `VITE_BASE_PATH` if the site should live in a subfolder instead of the root (`/`)
-2. Push to `main` (or trigger the **Deploy to Loopia** workflow manually). The workflow will:
-   - install dependencies
-   - run `npm run build` with `VITE_BASE_PATH` from secrets (defaults to `/`)
-   - upload everything from `dist/` to Loopia via FTP
+Two workflows now exist:
 
-If you need different credentials for staging/production, duplicate the workflow and point each one at the relevant set of secrets and remote directories.
+- `.github/workflows/deploy-dev.yml` – manual deploy to the dev site (e.g., `dev.skillshot.se`).
+- `.github/workflows/deploy-prod.yml` – manual deploy to the production site (`skillshot.se`).
+
+### Required repo variables
+
+Set these under **Settings → Variables → Actions**:
+
+- `FTP_HOST` – FTP hostname (shared by both deployments).
+- `FTP_PATH_DEV` – remote directory for the dev site.
+- `FTP_PATH_PROD` – remote directory for the prod site.
+- `VITE_BASE_PATH_DEV` – optional base path for dev build (defaults to `/`).
+- `VITE_BASE_PATH_PROD` – optional base path for prod build (defaults to `/`).
+
+### Required repo secrets
+
+Set under **Settings → Secrets → Actions**:
+
+- `FTP_USERNAME`
+- `FTP_PASSWORD`
+
+### Running a deploy
+
+1. In GitHub, go to the **Actions** tab.
+2. Choose either **Deploy to Loopia (dev.skillshot.se)** or **Deploy to Loopia (skillshot.se)**.
+3. Click **Run workflow**.
+
+Each workflow installs dependencies, runs `npm run build` with the corresponding `VITE_BASE_PATH`, and uploads `dist/` to the FTP target defined by the variables.

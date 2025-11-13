@@ -1,17 +1,14 @@
-name: Deploy to Loopia
+name: Deploy to Loopia (skillshot.se)
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 concurrency:
-  group: loopia-deploy
+  group: loopia-deploy-prod
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  build-and-deploy-prod:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,29 +23,30 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build site dev.skillshot.se
+      - name: Build site skillshot.se
         env:
-          VITE_BASE_PATH: ${{ secrets.VITE_BASE_PATH || '/' }}
+          VITE_BASE_PATH: ${{ vars.VITE_BASE_PATH_PROD || '/' }}
         run: npm run build
 
       - name: Verify FTP configuration
         env:
           FTP_HOST: ${{ vars.FTP_HOST }}
-          FTP_PATH_TEST: ${{ vars.FTP_PATH_TEST }}
+          FTP_PATH_PROD: ${{ vars.FTP_PATH_PROD }}
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
           [ -n "$FTP_HOST" ] || { echo "Missing FTP_HOST repository variable"; exit 1; }
-          [ -n "$FTP_PATH_TEST" ] || { echo "Missing FTP_PATH_TEST repository variable"; exit 1; }
+          [ -n "$FTP_PATH_PROD" ] || { echo "Missing FTP_PATH_PROD repository variable"; exit 1; }
           [ -n "$FTP_USERNAME" ] || { echo "Missing FTP_USERNAME secret"; exit 1; }
           [ -n "$FTP_PASSWORD" ] || { echo "Missing FTP_PASSWORD secret"; exit 1; }
 
-      - name: Upload to Loopia via FTP (dev.skillshot.se)
+      - name: Upload to Loopia via FTP (skillshot.se)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ vars.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ vars.FTP_PATH_TEST }}
+          server-dir: ${{ vars.FTP_PATH_PROD }}
           protocol: ftp
           local-dir: dist/
+          dangerous-clean-slate: true
