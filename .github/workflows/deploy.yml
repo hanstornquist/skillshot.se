@@ -13,12 +13,6 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    env:
-      VITE_BASE_PATH: ${{ secrets.VITE_BASE_PATH || '/' }}
-      FTP_HOST: ${{ secrets.FTP_HOST }}
-      FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-      FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-      FTP_PATH_TEST: ${{ secrets.FTP_PATH_TEST }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,21 +27,28 @@ jobs:
         run: npm ci
 
       - name: Build site dev.skillshot.se
+        env:
+          VITE_BASE_PATH: ${{ secrets.VITE_BASE_PATH || '/' }}
         run: npm run build
 
-      - name: Verify FTP secrets
+      - name: Verify FTP configuration
+        env:
+          FTP_HOST: ${{ vars.FTP_HOST }}
+          FTP_PATH_TEST: ${{ vars.FTP_PATH_TEST }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
-          [ -n "$FTP_HOST" ] || { echo "Missing FTP_HOST secret"; exit 1; }
+          [ -n "$FTP_HOST" ] || { echo "Missing FTP_HOST repository variable"; exit 1; }
+          [ -n "$FTP_PATH_TEST" ] || { echo "Missing FTP_PATH_TEST repository variable"; exit 1; }
           [ -n "$FTP_USERNAME" ] || { echo "Missing FTP_USERNAME secret"; exit 1; }
           [ -n "$FTP_PASSWORD" ] || { echo "Missing FTP_PASSWORD secret"; exit 1; }
-          [ -n "$FTP_PATH_TEST" ] || { echo "Missing FTP_PATH_TEST secret"; exit 1; }
 
       - name: Upload to Loopia via FTP (dev.skillshot.se)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ${{ env.FTP_HOST }}
+          server: ${{ vars.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ env.FTP_PATH_TEST }}
+          server-dir: ${{ vars.FTP_PATH_TEST }}
           protocol: ftp
           local-dir: dist/
