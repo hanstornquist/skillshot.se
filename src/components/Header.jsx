@@ -1,10 +1,15 @@
+const baseUrl = import.meta.env.BASE_URL || '/';
+const logoSrc = `${baseUrl}images/SkillShot.png`;
+
 function Header({ tabs, activeTab, onTabChange }) {
   return (
     <header className="sixteen columns head">
       <div className="container">
-        <div className="sixteen columns">
-          <h1>Hans Törnquist</h1>
-          <nav aria-label="Primary">
+        <div className="sixteen columns header-inner">
+          <div className="header-logo-wrapper">
+            <img className="header-logo" src={logoSrc} alt="SkillShot logo" />
+          </div>
+          <nav aria-label="Primary" className="header-nav">
             <ul id="menu" className="tabs">
               {tabs.map((tab) => (
                 <li key={tab.id}>

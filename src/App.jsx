@@ -6,20 +6,39 @@ import CvSection from './components/sections/CvSection.jsx';
 import startData from '../pages/start.json';
 import cvData from '../pages/cv.json';
 
-const TABS = [
-  { id: 'start', label: 'Start' },
-  { id: 'cv', label: 'CV' },
-];
-
-const DEFAULT_TAB = TABS[0].id;
+const COMPONENT_MAP = {
+  start: StartSection,
+  cv: CvSection,
+};
 
 function App() {
-  const [activeTab, setActiveTab] = useState(DEFAULT_TAB);
+  const pageConfig = useMemo(() => {
+    const pages = [startData, cvData].map((data) => ({
+      id: data.id,
+      data,
+      component: COMPONENT_MAP[data.id] ?? StartSection,
+    }));
+    return pages.filter((page) => page.id);
+  }, []);
+
+  const tabs = useMemo(
+    () =>
+      pageConfig
+        .filter((page) => page.data?.showInMenu)
+        .map((page) => ({
+          id: page.id,
+          label: page.data?.menuName || page.id,
+        })),
+    [pageConfig],
+  );
+
+  const defaultTab = tabs[0]?.id || pageConfig[0]?.id || '';
+  const [activeTab, setActiveTab] = useState(defaultTab);
 
   const isValidTab = useMemo(() => {
-    const lookup = new Set(TABS.map((tab) => tab.id));
+    const lookup = new Set(pageConfig.map((page) => page.id));
     return (candidate) => lookup.has(candidate);
-  }, []);
+  }, [pageConfig]);
 
   useEffect(() => {
     const fromHash = window.location.hash.replace('#', '');
@@ -45,18 +64,17 @@ function App() {
   }, [activeTab]);
 
   const renderActiveSection = () => {
-    switch (activeTab) {
-      case 'cv':
-        return <CvSection heading={cvData.heading} data={cvData} />;
-      case 'start':
-      default:
-        return <StartSection data={startData} />;
+    const page = pageConfig.find((item) => item.id === activeTab) || pageConfig[0];
+    if (!page) {
+      return null;
     }
+    const SectionComponent = page.component;
+    return <SectionComponent data={page.data} />;
   };
 
   return (
     <>
-      <Header tabs={TABS} activeTab={activeTab} onTabChange={setActiveTab} />
+      <Header tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
       <article>
         <div className="container">
           <div className="sixteen columns" id="contentArea">

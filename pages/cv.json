@@ -1,4 +1,7 @@
 {
+  "id": "cv",
+  "menuName": "CV",
+  "showInMenu": true,
   "heading": "Curriculum vitae",
   "project": {
     "heading": "Projects",
