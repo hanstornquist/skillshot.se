@@ -4,6 +4,8 @@ function CvSection({ data }) {
   return (
     <section>
       <h2>{data.heading}</h2>
+      {data.preamble ? <p className="ingress">{data.preamble}</p> : null}
+      {data.mainBody ? <p>{data.mainBody}</p> : null}
 
       {project && (
         <>

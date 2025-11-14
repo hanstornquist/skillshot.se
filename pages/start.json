@@ -1,8 +1,10 @@
-{
+﻿{
   "id": "start",
   "menuName": "Start",
   "showInMenu": true,
-  "heading": "System developer",
-  "preamble": "Specialized in building large-scale digital products for banking and e-commerce using modern cloud-native stacks.",
-  "mainBody": "I have a genuine and deep technical interest and the fact that I'm very curious is the key to why I love solving problems and learn new techniques. Started my programming career in the late 80's and nowadays I spend most of my days architecting and delivering enterprise web platforms using React, Node.js, Kubernetes, Azure services and CI/CD pipelines with a strong focus on performance, accessibility and developer experience."
+  "heading": "SkillShot AB",
+  "preamble": "We help airlines, banks, fintechs and commerce brands move faster with modern cloud-native engineering.",
+  "mainBody": "SkillShot AB, founded in 2016 by Hans Törnquist, is a boutique consultancy blending deep enterprise experience with a modern toolset—designing scalable architectures, building React and Node.js front-ends, deploying services to Kubernetes and Azure, and automating everything through CI/CD pipelines. Our teams plug into your organisation to deliver high-impact initiatives such as rebuilding airline booking and disruption flows, modernising digital banking journeys, tackling legacy portal upgrades, implementing observability, or simply accelerating an existing roadmap. If you need pragmatic senior engineers who understand regulated industries and can get things done, SkillShot is here to help."
 }
+
+

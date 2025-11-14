@@ -1,24 +1,27 @@
-{
+﻿{
   "id": "cv",
   "menuName": "CV",
   "showInMenu": true,
-  "heading": "Curriculum vitae",
+  "heading": "Hans Törnquist",
+  "preamble": "System developer",
+  "mainBody": "I design and deliver large-scale banking and commerce solutions built on cloud-native, secure and observable foundations. Curiosity and a long-standing passion for programming drive everything I do. From building my first applications in the late 80's to leading today's distributed teams, I focus on pairing thoughtful architecture with pragmatic delivery. My recent work spans React front-ends, Node.js/Java services, Kubernetes workloads and automated CI/CD pipelines running in Azure. I help organisations modernise legacy systems, improve developer experience and launch resilient digital products that their customers trust every day.",
   "project": {
     "heading": "Projects",
-    "projects": [{
+    "projects": [
+      {
         "published" :  true,
         "href": "https://www.sas.se",
         "heading": "SAS 2022-08 - Ongoing",
         "preamble": "Developer in the team working with their web solutions for managing bookings and check in",
         "tools": [
-	  "NodeJS",
-	  "Kubernetes",
+          "NodeJS",
+          "Kubernetes",
           "IntelliJ",
           "Java 8, Java 17",
           "Maven",
           "Test driven development (TDD)",
           "JavaScript",
-	  "React",
+          "React",
           "Responsive design",
           "Single-page application"
         ]
@@ -35,8 +38,8 @@
           "EPiServer/Optimizely CMS",
           "Test driven development (TDD)",
           "JavaScript",
-		  "Vue",
-		  "Knockout",
+          "Vue",
+          "Knockout",
           "Responsive design",
           "Single-page application",
           "BankID (mobile, card and file)"
@@ -190,7 +193,7 @@
   "employment": {
     "heading": "Employments",
     "employments": [
-	  {
+      {
         "date": "2016-04",
         "heading": "Founder and owner, SkillShot AB",
         "preamble": "IT consultant within Solution architecture and development using EPiServer and .net"
