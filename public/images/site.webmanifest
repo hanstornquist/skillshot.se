@@ -1,0 +1,26 @@
+{
+  "name": "SkillShot AB",
+  "short_name": "SkillShot",
+  "description": "Modern system development and architecture for large-scale banking and e-commerce platforms",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/images/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/SkillShot.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

@@ -18,15 +18,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
+          cache: yarn
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --ignore-engines
+
+      - name: Lint
+        run: yarn lint
 
       - name: Build site skillshot.se
         env:
           VITE_BASE_PATH: ${{ vars.VITE_BASE_PATH_PROD || '/' }}
-        run: npm run build
+        run: yarn build
 
       - name: Verify FTP configuration
         env:
