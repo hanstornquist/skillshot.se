@@ -4,12 +4,12 @@
   "showInMenu": true,
   "heading": "Hans Törnquist",
   "preamble": "System developer",
-  "mainBody": "I design and deliver large-scale banking and commerce solutions built on cloud-native, secure and observable foundations. Curiosity and a long-standing passion for programming drive everything I do. From building my first applications in the late 80's to leading today's distributed teams, I focus on pairing thoughtful architecture with pragmatic delivery. My recent work spans React front-ends, Node.js/Java services, Kubernetes workloads and automated CI/CD pipelines running in Azure. I help organisations modernise legacy systems, improve developer experience and launch resilient digital products that their customers trust every day.",
+  "mainBody": "I have spent more than two decades designing and building digital products for airlines, banks and commerce brands. My work moves between solution architecture and hands-on engineering, covering React interfaces, Node.js and .NET services, container platforms and the automation that keeps them running. I enjoy taking complicated legacy estates, breaking the work into pragmatic steps and leading teams through the change so the organisation sees results quickly. The projects below show how I balance architecture, delivery and mentoring to keep platforms secure, observable and easy for developers to evolve.",
   "project": {
     "heading": "Projects",
     "projects": [
       {
-        "published" :  true,
+        "published": true,
         "href": "https://www.sas.se",
         "heading": "SAS 2022-08 - Ongoing",
         "preamble": "Developer in the team working with their web solutions for managing bookings and check in",
@@ -27,7 +27,7 @@
         ]
       },
       {
-        "published" :  true,
+        "published": true,
         "href": "https://www.marginalen.se",
         "heading": "Marginalen Bank 2016-10 - 2022-08",
         "preamble": "Solution architect and lead programmer in the project of development their web solutions",
@@ -46,7 +46,7 @@
         ]
       },
       {
-        "published" :  true,
+        "published": true,
         "href": "https://santanderconsumer.se",
         "heading": "Santander Consumer Bank 2015-12 - 2016-10",
         "preamble": "Solution architect in the project of development new functionallity on their Internet banking solution",
@@ -63,7 +63,7 @@
         ]
       },
       {
-        "published" :  true,
+        "published": true,
         "href": "http://www.bemz.com/",
         "heading": "BEMZ 2015-08 - 2015-12",
         "preamble": "System developer in the project of the development of a new e-commerce solution",
@@ -80,7 +80,7 @@
         ]
       },
       {
-        "published" :  true,
+        "published": true,
         "href": "http://www.transdev.se/",
         "heading": "Transdev 2015-03 to 2015-08",
         "preamble": "Tech lead in the project of the development of a new intranet",
@@ -97,7 +97,7 @@
         ]
       },
       {
-        "published" :  true,
+        "published": true,
         "href": "http://www.icagruppen.se",
         "heading": "ICA Gruppen 2014-01 to 2014-03",
         "preamble": "Tech lead in the project of the development of the new corprate web site",
@@ -113,7 +113,7 @@
         ]
       },
       {
-        "published" :  true,
+        "published": true,
         "href": "http://www.landshypotek.se",
         "heading": "Landshypotek 2014-01 to 2014-03",
         "preamble": "Tech lead in the development of a new web site",
@@ -128,7 +128,7 @@
         ]
       },
       {
-        "published" :  true,
+        "published": true,
         "href": "https://santanderconsumer.se",
         "heading": "Santander Consumer Bank 2013-09 to 2015-03",
         "preamble": "Solution architect in the project of development of a new Internet banking solution for their customers and upgrading of their server park to EPiServer CMS 7",
@@ -145,7 +145,7 @@
         ]
       },
       {
-        "published" :  true,
+        "published": true,
         "href": "http://kdapotek.se",
         "heading": "Kronans Apotek 2013-09 to 2015-02",
         "preamble": "Tech lead in the redesign project and integration between 1177 Vårdguinden and Kronans Apotek",
@@ -158,7 +158,7 @@
         ]
       },
       {
-        "published" :  true,
+        "published": true,
         "href": "http://www.riksbyggen.se",
         "heading": "Riksbyggen 2011-09 to 2013-09",
         "preamble": "Extranet for all customers to Riksbyggen, in this project I started as a system developer and ended as tech lead",
@@ -171,10 +171,10 @@
         ]
       },
       {
-        "published" :  true,
+        "published": true,
         "href": "http://www.jm.se",
         "heading": "JM AB 2007-03 to 2011-08",
-        "preamble": "System developer with architectural responsibility for all the websites in the corporate group",
+        "preamble": "System developer with architectural responsibility for all corporate websites, including designing JM's fully redundant server platform for minimal downtime",
         "tools": [
           "Visual Studio 10",
           "Microsoft .NET Framework 2, 3.5 och 4",
@@ -185,8 +185,7 @@
           "Load balancing using F5 BIG-IP",
           "Capitex",
           "Scrum"
-        ],
-        "footer": "I have also designed JM's fully redundant server platform for all the sites designed for minimum downtime."
+        ]
       }
     ]
   },
@@ -196,17 +195,17 @@
       {
         "date": "2016-04",
         "heading": "Founder and owner, SkillShot AB",
-        "preamble": "IT consultant within Solution architecture and development using EPiServer and .net"
+        "preamble": "IT consultant within Solution architecture and development using EPiServer/Optimizely CMS and .NET"
       },
       {
         "date": "2015-08 to 2016-04",
         "heading": "Solution architect, Making Waves Sweden",
-        "preamble": "IT consultant within Solution architecture and development using EPiServer and .net"
+        "preamble": "IT consultant within Solution architecture and development using EPiServer and .NET"
       },
       {
         "date": "2011-09 to 2015-08",
         "heading": "Solution architect, Know IT Reaktor Stockholm AB",
-        "preamble": "IT consultant within Solution architecture and development using EPiServer and .net"
+        "preamble": "IT consultant within Solution architecture and development using EPiServer and .NET"
       },
       {
         "date": "2007-03 to 2011-08",
@@ -245,13 +244,12 @@
   "special": {
     "heading": "Special skills",
     "specials": [
-      "Special expertise in Microsoft. NET Framework and EPiServer",
-      "Has extensive experience of providers within .Net",
-      "Has extensive experience in LINQ.",
-      "Has extensive experience in Entity Framework 4",
-      "Has extensive experience of EPiServer CMS Enterprise solutions and custom page providers in a multi-site environment.",
-      "Has extensive experience using Page Builder Type.",
-      "More than ten years. experience in designing laser shows"
+      "Solution architecture across Microsoft .NET, Node.js and Azure/Kubernetes platforms",
+      "Deep expertise in EPiServer/Optimizely CMS multi-site and custom provider builds",
+      "Extensive experience with LINQ, Entity Framework and data-heavy API design",
+      "Hands-on with CI/CD automation, observability tooling and developer enablement",
+      "More than ten years. experience in designing laser shows",
+      "Licensed Tripoli high-power rocket flyer"
     ]
   }
 }

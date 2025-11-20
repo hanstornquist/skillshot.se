@@ -43,6 +43,17 @@
   margin-bottom: 10px;
 }
 
+#contentArea ul {
+  list-style: disc;
+  margin: 0 0 15px 20px;
+  padding: 0;
+}
+
+#contentArea li {
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
 .footer {
   margin: 40px 0;
 }
