@@ -22,7 +22,7 @@ The dev server runs on Vite (default port 5173). Update `pages/*.json` for copy 
 
 ## Deployment
 
-GitHub Actions handle both environments: [dev.skillshot.se](https://dev.skillshot.se) is updated automatically via `deploy-dev.yml`, while [www.skillshot.se](https://www.skillshot.se) is released manually via `deploy-prod.yml`. Each workflow builds the site and uploads `dist/` to Loopia over FTP. See `DEPLOYMENT.md` for required secrets/variables and detailed instructions.
+GitHub Actions handle both environments: [dev.skillshot.se](https://dev.skillshot.se) is updated automatically via `deploy-dev.yml`, while [www.skillshot.se](https://www.skillshot.se) is released manually via `deploy-prod.yml`. Each workflow builds the site and uploads `dist/` to Loopia over FTP. See [`DEPLOYMENT.md`](DEPLOYMENT.md) for required secrets/variables and detailed instructions.
 
 ## Project layout
 
