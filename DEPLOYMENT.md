@@ -4,8 +4,8 @@
 
 Two workflows now exist:
 
-- `.github/workflows/deploy-dev.yml` – manual deploy to the dev site (e.g., `dev.skillshot.se`).
-- `.github/workflows/deploy-prod.yml` – manual deploy to the production site (`skillshot.se`).
+- `.github/workflows/deploy-dev.yml` – runs automatically to keep the test environment at [dev.skillshot.se](https://dev.skillshot.se) in sync with `main`.
+- `.github/workflows/deploy-prod.yml` – manual workflow for pushing a vetted build to the public site ([www.skillshot.se](https://www.skillshot.se)).
 
 ### Required repo variables
 
@@ -24,10 +24,10 @@ Set under **Settings → Secrets → Actions**:
 - `FTP_USERNAME`
 - `FTP_PASSWORD`
 
-### Running a deploy
+### Running a prod deploy
 
 1. In GitHub, go to the **Actions** tab.
-2. Choose either **Deploy to Loopia (dev.skillshot.se)** or **Deploy to Loopia (skillshot.se)**.
+2. Run **Deploy to Loopia (skillshot.se)** and provide commit/tag info if prompted.
 3. Click **Run workflow**.
 
-Each workflow installs dependencies, runs `npm run build` with the corresponding `VITE_BASE_PATH`, and uploads `dist/` to the FTP target defined by the variables.
+The production workflow installs dependencies, runs `npm run build` with `VITE_BASE_PATH_PROD`, and uploads `dist/` to the FTP target defined by the variables. The dev workflow performs the same steps automatically for [dev.skillshot.se](https://dev.skillshot.se) whenever its trigger conditions are met, so no manual action is required for test deployments.
