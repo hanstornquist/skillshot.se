@@ -12,7 +12,8 @@
   background-color: #fafafa;
 }
 
-.fa {
+.fa,
+.fab {
   margin-right: 50px;
 }
 
@@ -56,4 +57,26 @@
 
 .footer {
   margin: 40px 0;
+}
+
+.button-skillshot {
+  background: #f05a28 !important;
+  border: 1px solid #d04a18 !important;
+  color: #fff !important;
+  text-shadow: none !important;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button-skillshot:hover {
+  background: #d04a18 !important;
+  border-color: #b03a08 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.button-skillshot:active {
+  background: #b03a08 !important;
+  transform: translateY(0);
+  box-shadow: none;
 }

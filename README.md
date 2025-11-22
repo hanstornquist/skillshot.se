@@ -31,9 +31,9 @@ root
 ├─ public/            # Static assets copied as-is
 ├─ src/
 │  ├─ App.jsx        # Section compositor
-│  ├─ components/    # Header/Footer + section blocks
+│  ├─ components/    # Header/Footer
+│  ├─ features/      # Feature-based modules (Start, CV, DXF)
 │  └─ assets/        # Component-scoped assets
-├─ pages/            # JSON content driving sections
 ├─ stylesheets/      # Base/layout/skeleton CSS
 └─ DEPLOYMENT.md     # Workflow + FTP details
 ```

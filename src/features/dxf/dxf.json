@@ -1,0 +1,18 @@
+{
+  "id": "dxf",
+  "menuName": "DXF Optimizer",
+  "showInMenu": false,
+  "heading": "DXF Optimizer for Laser Cutting",
+  "preamble": "Upload a DXF file to remove duplicate entities (lines, arcs, etc.) that are exactly on top of each other.",
+  "dragDropText": "Drag and drop your DXF file here, or click to select",
+  "selectFileButton": "Select File",
+  "selectedFilePrefix": "Selected: ",
+  "previewHeading": "Preview (Duplicates in Red)",
+  "previewNote": "Note: Preview supports LINE, CIRCLE, ARC and LWPOLYLINE entities.",
+  "downloadButton": "Download Optimized DXF",
+  "resultsHeading": "Optimization Results:",
+  "removedCountPrefix": "Removed ",
+  "removedCountSuffix": " duplicate entities",
+  "sizeReducedPrefix": "Size reduced by ",
+  "sizeReducedSuffix": " KB"
+}
