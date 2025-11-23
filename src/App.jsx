@@ -5,16 +5,19 @@ import StartSection from "./features/start/StartSection.jsx";
 import CvSection from "./features/cv/CvSection.jsx";
 import DxfSection from "./features/dxf/DxfSection.jsx";
 import LabsSection from "./features/labs/LabsSection.jsx";
+import EjectionChargeCalculator from "./features/labs/EjectionChargeCalculator.jsx";
 import startData from "./features/start/start.json";
 import cvData from "./features/cv/cv.json";
 import dxfData from "./features/dxf/dxf.json";
 import labsData from "./features/labs/labs.json";
+import ejectionData from "./features/labs/ejection.json";
 
 const COMPONENT_MAP = {
   start: StartSection,
   cv: CvSection,
   dxf: DxfSection,
   labs: LabsSection,
+  ejection: EjectionChargeCalculator,
 };
 
 // Build parent map from data to support hierarchical routing
@@ -31,7 +34,7 @@ const getPathForId = (id) => {
 
 function App() {
   // Re-create pageConfig on every render to support HMR updates
-  const pageConfig = [startData, cvData, labsData, dxfData]
+  const pageConfig = [startData, cvData, labsData, dxfData, ejectionData]
     .map((data) => ({
       id: data.id,
       data,
@@ -84,6 +87,7 @@ function App() {
       cvData.id,
       dxfData.id,
       labsData.id,
+      ejectionData.id,
     ]);
     return validIds.has(candidateId)
       ? candidateId

@@ -1,0 +1,86 @@
+{
+  "id": "ejection",
+  "menuName": "Ejection Charge",
+  "showInMenu": false,
+  "heading": "Ejection Charge",
+  "preamble": "Calculate black powder charges for model rocket recovery systems.",
+  "backButton": "Back to Labs",
+  "backTarget": "labs",
+  "unitSelector": {
+    "metric": "Metric",
+    "imperial": "Imperial"
+  },
+  "inputs": {
+    "diameter": {
+      "label": {
+        "metric": "Tube Diameter (mm)",
+        "imperial": "Tube Diameter (inches)"
+      },
+      "placeholder": {
+        "metric": "e.g. 100",
+        "imperial": "e.g. 4.0"
+      }
+    },
+    "length": {
+      "label": {
+        "metric": "Unfilled Length (mm)",
+        "imperial": "Unfilled Length (inches)"
+      },
+      "placeholder": {
+        "metric": "e.g. 300",
+        "imperial": "e.g. 12.0"
+      },
+      "helper": "The length of the empty space not taken by parachute/shock cord."
+    },
+    "pressure": {
+      "label": {
+        "metric": "Desired Pressure (bar)",
+        "imperial": "Desired Pressure (PSI)"
+      },
+      "presets": {
+        "label": "Target Pressure Preset",
+        "friction": "Friction Fit (Low)",
+        "shear": "Shear Pins (High)"
+      },
+      "helper": {
+        "metric": "Friction fit: ~0.1-0.3 bar. Shear pins: ~1.0+ bar.",
+        "imperial": "Friction fit: ~2-5 PSI. Shear pins: ~15+ PSI."
+      }
+    },
+    "shearPins": {
+      "title": "Shear Pins (Optional)",
+      "countLabel": "Number of Pins",
+      "sizeLabel": "Pin Size",
+      "options": [
+        { "name": "M2 Nylon", "forceN": 147, "forceLbs": 33 },
+        { "name": "M3 Nylon", "forceN": 351, "forceLbs": 79 },
+        { "name": "#2-56 Nylon", "forceN": 169, "forceLbs": 38 },
+        { "name": "#4-40 Nylon", "forceN": 280, "forceLbs": 63 },
+        { "name": "#6-32 Nylon", "forceN": 422, "forceLbs": 95 }
+      ],
+      "calculatedLabel": "Est. Burst Pressure",
+      "applyButton": "Apply (+50% Safety)"
+    }
+  },
+  "results": {
+    "volume": {
+      "label": "Calculated Volume",
+      "unit": {
+        "metric": "cm³",
+        "imperial": "in³"
+      }
+    },
+    "force": {
+      "label": "Force on Bulkhead",
+      "unit": {
+        "metric": "N",
+        "imperial": "lbs"
+      }
+    },
+    "charge": {
+      "label": "Required Charge (4F BP)",
+      "unit": "g"
+    },
+    "disclaimer": "Formula: Ideal Gas Law (PV = nRT)\nAlways ground test your ejection charges!"
+  }
+}

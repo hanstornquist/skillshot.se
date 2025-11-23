@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { processDxfContent } from "./dxfHelpers";
 import DxfCanvas from "./DxfCanvas";
+import BackButton from "../../components/BackButton";
 
-const DxfSection = ({ data }) => {
+const DxfSection = ({ data, onNavigate }) => {
   const [optimizedDxf, setOptimizedDxf] = useState("");
   const [stats, setStats] = useState(null);
   const [fileName, setFileName] = useState("");
@@ -86,6 +87,13 @@ const DxfSection = ({ data }) => {
 
   return (
     <section className="max-w-5xl mx-auto px-4 py-12">
+      <div className="flex justify-between items-center mb-8">
+        <BackButton
+          onClick={() => onNavigate(data.backTarget)}
+          label={data.backButton}
+        />
+      </div>
+
       <div className="mb-12 border-l-4 border-skillshot pl-8">
         <h2 className="mb-6 text-4xl font-black tracking-tighter text-black sm:text-6xl md:text-8xl uppercase break-words">
           {data.heading}

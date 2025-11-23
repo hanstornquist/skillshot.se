@@ -3,6 +3,8 @@
   "menuName": "DXF Optimizer",
   "showInMenu": false,
   "heading": "DXF Optimizer for Laser Cutting",
+  "backButton": "Back to Labs",
+  "backTarget": "labs",
   "preamble": "Upload a DXF file to remove duplicate entities (lines, arcs, etc.) that are exactly on top of each other.",
   "dragDropText": "Drag and drop your DXF file here, or click to select",
   "selectFileButton": "Select File",

@@ -9,6 +9,11 @@
       "id": "dxf",
       "title": "DXF Optimizer",
       "description": "Remove duplicate entities from DXF files for laser cutting."
+    },
+    {
+      "id": "ejection",
+      "title": "Ejection Charge",
+      "description": "Calculate black powder charges for model rocket recovery."
     }
   ]
 }
