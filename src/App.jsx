@@ -54,6 +54,21 @@ function App() {
 
   const defaultTab = tabs[0]?.id || pageConfig[0]?.id || "";
 
+  const [isScrolled, setIsScrolled] = useState(false);
+  const mainRef = useRef(null);
+
+  useEffect(() => {
+    const mainElement = mainRef.current;
+    if (!mainElement) return;
+
+    const handleScroll = () => {
+      setIsScrolled(mainElement.scrollTop > 0);
+    };
+
+    mainElement.addEventListener("scroll", handleScroll);
+    return () => mainElement.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const [activeTab, setActiveTab] = useState(() => {
     const path = window.location.pathname;
     // Handle root path
@@ -122,7 +137,28 @@ function App() {
     if (currentPath !== newPath) {
       window.history.pushState(null, "", newPath);
     }
+
+    // Scroll to top when tab changes
+    if (mainRef.current) {
+      // Use setTimeout to ensure render is complete and layout is updated
+      window.setTimeout(() => {
+        if (mainRef.current) {
+          mainRef.current.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, 0);
+    }
   }, [activeTab, defaultTab]);
+
+  const handleTabChange = (tabId) => {
+    if (tabId === activeTab) {
+      // If clicking the same tab, just scroll to top
+      if (mainRef.current) {
+        mainRef.current.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    } else {
+      setActiveTab(tabId);
+    }
+  };
 
   const renderActiveSection = () => {
     const page =
@@ -131,7 +167,7 @@ function App() {
       return null;
     }
     const SectionComponent = page.component;
-    return <SectionComponent data={page.data} onNavigate={setActiveTab} />;
+    return <SectionComponent data={page.data} onNavigate={handleTabChange} />;
   };
 
   return (
@@ -139,9 +175,10 @@ function App() {
       <Header
         tabs={tabs}
         activeTab={PARENT_MAP[activeTab] || activeTab}
-        onTabChange={setActiveTab}
+        onTabChange={handleTabChange}
+        isScrolled={isScrolled}
       />
-      <main className="flex-1 overflow-y-auto scroll-smooth">
+      <main ref={mainRef} className="flex-1 overflow-y-auto">
         <div className="container mx-auto px-4">
           <div className="w-full">{renderActiveSection()}</div>
         </div>
