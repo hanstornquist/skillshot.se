@@ -1,0 +1,17 @@
+[
+  {
+    "href": "https://www.linkedin.com/in/hans-t%C3%B6rnquist-01435254/",
+    "label": "LinkedIn",
+    "icon": "fa-linkedin"
+  },
+  {
+    "href": "https://x.com/hanstornquist",
+    "label": "X",
+    "icon": "fa-x-twitter"
+  },
+  {
+    "href": "https://www.instagram.com/hanstornquist/",
+    "label": "Instagram",
+    "icon": "fa-instagram"
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "id": "labs",
+  "menuName": "Labs",
+  "showInMenu": true,
+  "heading": "Labs",
+  "preamble": "Experimental tools and prototypes.",
+  "links": [
+    {
+      "id": "dxf",
+      "title": "DXF Optimizer",
+      "description": "Remove duplicate entities from DXF files for laser cutting."
+    }
+  ]
+}

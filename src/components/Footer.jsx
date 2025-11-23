@@ -1,15 +1,4 @@
-const SOCIAL_LINKS = [
-  {
-    href: "https://www.linkedin.com/in/hans-t%C3%B6rnquist-01435254/",
-    label: "LinkedIn",
-    icon: "fa-linkedin",
-  },
-  {
-    href: "https://twitter.com/hanstornquist",
-    label: "Twitter",
-    icon: "fa-twitter",
-  },
-];
+import socialLinks from "../settings/social.json";
 
 function Footer() {
   return (
@@ -17,7 +6,7 @@ function Footer() {
       <div className="mx-auto max-w-7xl px-4">
         <div className="flex flex-col items-center justify-between gap-8 sm:flex-row">
           <div className="flex gap-6">
-            {SOCIAL_LINKS.map((link) => (
+            {socialLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}

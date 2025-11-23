@@ -4,19 +4,34 @@ import Footer from "./components/Footer.jsx";
 import StartSection from "./features/start/StartSection.jsx";
 import CvSection from "./features/cv/CvSection.jsx";
 import DxfSection from "./features/dxf/DxfSection.jsx";
+import LabsSection from "./features/labs/LabsSection.jsx";
 import startData from "./features/start/start.json";
 import cvData from "./features/cv/cv.json";
 import dxfData from "./features/dxf/dxf.json";
+import labsData from "./features/labs/labs.json";
 
 const COMPONENT_MAP = {
   start: StartSection,
   cv: CvSection,
   dxf: DxfSection,
+  labs: LabsSection,
+};
+
+// Build parent map from data to support hierarchical routing
+const PARENT_MAP = {};
+labsData.links?.forEach((link) => {
+  PARENT_MAP[link.id] = labsData.id;
+});
+
+const getPathForId = (id) => {
+  if (id === startData.id) return "/";
+  if (PARENT_MAP[id]) return `/${PARENT_MAP[id]}/${id}`;
+  return `/${id}`;
 };
 
 function App() {
   // Re-create pageConfig on every render to support HMR updates
-  const pageConfig = [startData, cvData, dxfData]
+  const pageConfig = [startData, cvData, labsData, dxfData]
     .map((data) => ({
       id: data.id,
       data,
@@ -40,9 +55,24 @@ function App() {
   const defaultTab = tabs[0]?.id || pageConfig[0]?.id || "";
 
   const [activeTab, setActiveTab] = useState(() => {
-    const path = window.location.pathname.substring(1);
-    const validIds = new Set([startData.id, cvData.id, dxfData.id]);
-    return validIds.has(path) ? path : tabs[0]?.id || startData.id;
+    const path = window.location.pathname;
+    // Handle root path
+    if (path === "/" || path === "") return startData.id;
+
+    // Extract the last segment of the path as the ID
+    // e.g. /labs/dxf -> dxf, /cv -> cv
+    const parts = path.split("/").filter(Boolean);
+    const candidateId = parts[parts.length - 1];
+
+    const validIds = new Set([
+      startData.id,
+      cvData.id,
+      dxfData.id,
+      labsData.id,
+    ]);
+    return validIds.has(candidateId)
+      ? candidateId
+      : tabs[0]?.id || startData.id;
   });
 
   // Stable lookup function
@@ -60,8 +90,10 @@ function App() {
 
   useEffect(() => {
     const getTabFromPath = () => {
-      const path = window.location.pathname.substring(1);
-      return path || defaultTab;
+      const path = window.location.pathname;
+      if (path === "/" || path === "") return defaultTab;
+      const parts = path.split("/").filter(Boolean);
+      return parts[parts.length - 1] || defaultTab;
     };
 
     // Only set active tab if it's actually different to avoid loops
@@ -82,9 +114,12 @@ function App() {
   }, [defaultTab]); // Removed isValidTab from dependencies
 
   useEffect(() => {
-    const path = window.location.pathname.substring(1);
-    if (activeTab !== path && !(activeTab === defaultTab && path === "")) {
-      const newPath = activeTab === defaultTab ? "/" : `/${activeTab}`;
+    const currentPath = window.location.pathname;
+    const newPath = getPathForId(activeTab);
+
+    // Only push state if the path is actually different
+    // This prevents replacing /labs/dxf with /dxf if we had simple logic before
+    if (currentPath !== newPath) {
       window.history.pushState(null, "", newPath);
     }
   }, [activeTab, defaultTab]);
@@ -96,12 +131,16 @@ function App() {
       return null;
     }
     const SectionComponent = page.component;
-    return <SectionComponent data={page.data} />;
+    return <SectionComponent data={page.data} onNavigate={setActiveTab} />;
   };
 
   return (
     <div className="flex flex-col h-screen overflow-hidden">
-      <Header tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
+      <Header
+        tabs={tabs}
+        activeTab={PARENT_MAP[activeTab] || activeTab}
+        onTabChange={setActiveTab}
+      />
       <main className="flex-1 overflow-y-auto scroll-smooth">
         <div className="container mx-auto px-4">
           <div className="w-full">{renderActiveSection()}</div>
