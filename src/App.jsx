@@ -11,6 +11,7 @@ import cvData from "./features/cv/cv.json";
 import dxfData from "./features/dxf/dxf.json";
 import labsData from "./features/labs/labs.json";
 import ejectionData from "./features/labs/ejection.json";
+import globalData from "./features/global.json";
 
 const COMPONENT_MAP = {
   start: StartSection,
@@ -171,7 +172,13 @@ function App() {
       return null;
     }
     const SectionComponent = page.component;
-    return <SectionComponent data={page.data} onNavigate={handleTabChange} />;
+    return (
+      <SectionComponent
+        data={page.data}
+        globalData={globalData}
+        onNavigate={handleTabChange}
+      />
+    );
   };
 
   return (

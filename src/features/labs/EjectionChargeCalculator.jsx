@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import BackButton from "../../components/BackButton";
 
-const EjectionChargeCalculator = ({ data, onNavigate }) => {
+const EjectionChargeCalculator = ({ data, globalData, onNavigate }) => {
   const [unitSystem, setUnitSystem] = useState("metric");
   const [diameter, setDiameter] = useState("");
   const [length, setLength] = useState("");
@@ -162,8 +162,8 @@ const EjectionChargeCalculator = ({ data, onNavigate }) => {
     <section className="max-w-4xl mx-auto px-4 py-12">
       <div className="flex justify-between items-center mb-8">
         <BackButton
-          onClick={() => onNavigate(data.backTarget)}
-          label={data.backButton}
+          onClick={() => onNavigate(globalData.common.backTarget)}
+          label={globalData.common.backButton}
         />
 
         <div className="flex border-2 border-black">
@@ -175,7 +175,7 @@ const EjectionChargeCalculator = ({ data, onNavigate }) => {
                 : "bg-white text-black hover:bg-gray-100"
             }`}
           >
-            {data.unitSelector.metric}
+            {globalData.common.unitSelector.metric}
           </button>
           <button
             onClick={() => handleUnitChange("imperial")}
@@ -185,7 +185,7 @@ const EjectionChargeCalculator = ({ data, onNavigate }) => {
                 : "bg-white text-black hover:bg-gray-100"
             }`}
           >
-            {data.unitSelector.imperial}
+            {globalData.common.unitSelector.imperial}
           </button>
         </div>
       </div>
@@ -268,8 +268,12 @@ const EjectionChargeCalculator = ({ data, onNavigate }) => {
                     >
                       {opt.name} (
                       {unitSystem === "metric"
-                        ? opt.forceN + " N"
-                        : opt.forceLbs + " lbs"}
+                        ? opt.forceN +
+                          " " +
+                          globalData.common.units.force.metric
+                        : opt.forceLbs +
+                          " " +
+                          globalData.common.units.force.imperial}
                       )
                     </option>
                   ))}
@@ -285,7 +289,7 @@ const EjectionChargeCalculator = ({ data, onNavigate }) => {
                   </span>
                   <span className="font-mono font-bold">
                     {parseFloat((calculatedShearPressure / 1.5).toFixed(1))}{" "}
-                    {unitSystem === "metric" ? "bar" : "PSI"}
+                    {globalData.common.units.pressure[unitSystem]}
                   </span>
                 </div>
                 <button
@@ -294,7 +298,7 @@ const EjectionChargeCalculator = ({ data, onNavigate }) => {
                 >
                   {data.inputs.shearPins.applyButton} (
                   {parseFloat(calculatedShearPressure.toFixed(1))}{" "}
-                  {unitSystem === "metric" ? "bar" : "PSI"})
+                  {globalData.common.units.pressure[unitSystem]})
                 </button>
               </div>
             )}

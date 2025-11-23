@@ -3,7 +3,7 @@ import { processDxfContent } from "./dxfHelpers";
 import DxfCanvas from "./DxfCanvas";
 import BackButton from "../../components/BackButton";
 
-const DxfSection = ({ data, onNavigate }) => {
+const DxfSection = ({ data, globalData, onNavigate }) => {
   const [optimizedDxf, setOptimizedDxf] = useState("");
   const [stats, setStats] = useState(null);
   const [fileName, setFileName] = useState("");
@@ -89,8 +89,8 @@ const DxfSection = ({ data, onNavigate }) => {
     <section className="max-w-5xl mx-auto px-4 py-12">
       <div className="flex justify-between items-center mb-8">
         <BackButton
-          onClick={() => onNavigate(data.backTarget)}
-          label={data.backButton}
+          onClick={() => onNavigate(globalData.common.backTarget)}
+          label={globalData.common.backButton}
         />
       </div>
 

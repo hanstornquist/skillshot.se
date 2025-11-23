@@ -1,0 +1,21 @@
+{
+  "common": {
+    "backArrow": "←",
+    "backButton": "Back to Labs",
+    "backTarget": "labs",
+    "unitSelector": {
+      "metric": "Metric",
+      "imperial": "Imperial"
+    },
+    "units": {
+      "pressure": {
+        "metric": "bar",
+        "imperial": "PSI"
+      },
+      "force": {
+        "metric": "N",
+        "imperial": "lbs"
+      }
+    }
+  }
+}

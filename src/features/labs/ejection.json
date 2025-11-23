@@ -4,12 +4,6 @@
   "showInMenu": false,
   "heading": "Ejection Charge",
   "preamble": "Calculate black powder charges for model rocket recovery systems.",
-  "backButton": "Back to Labs",
-  "backTarget": "labs",
-  "unitSelector": {
-    "metric": "Metric",
-    "imperial": "Imperial"
-  },
   "inputs": {
     "diameter": {
       "label": {
