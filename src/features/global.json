@@ -1,4 +1,9 @@
 {
+  "meta": {
+    "siteName": "SkillShot AB",
+    "defaultImage": "/images/SkillShot.png",
+    "twitterHandle": "@hanstornquist"
+  },
   "common": {
     "backArrow": "←",
     "backButton": "Back to Labs",

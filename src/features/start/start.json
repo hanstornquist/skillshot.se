@@ -2,6 +2,11 @@
   "id": "start",
   "menuName": "Start",
   "showInMenu": true,
+  "meta": {
+    "title": "SkillShot AB - Reliable Software Engineering",
+    "description": "We build dependable software and cloud platforms for airlines, banks and commerce brands.",
+    "image": "/images/SkillShot.png"
+  },
   "heading": "SkillShot AB",
   "isDarkMode": false,
   "preamble": "We build dependable software and cloud platforms for airlines, banks and commerce brands.",

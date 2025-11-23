@@ -2,6 +2,11 @@
   "id": "labs",
   "menuName": "Labs",
   "showInMenu": true,
+  "meta": {
+    "title": "Labs | SkillShot AB",
+    "description": "Experimental tools and prototypes from SkillShot AB.",
+    "image": "/images/SkillShot.png"
+  },
   "heading": "Labs",
   "isDarkMode": false,
   "preamble": "Experimental tools and prototypes.",

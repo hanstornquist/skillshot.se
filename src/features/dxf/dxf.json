@@ -2,6 +2,11 @@
   "id": "dxf",
   "menuName": "DXF Optimizer",
   "showInMenu": false,
+  "meta": {
+    "title": "DXF Optimizer | SkillShot AB",
+    "description": "Free online tool to remove duplicate entities from DXF files for laser cutting.",
+    "image": "/images/SkillShot.png"
+  },
   "heading": "DXF Optimizer for Laser Cutting",
   "isDarkMode": false,
   "preamble": "Upload a DXF file to remove duplicate entities (lines, arcs, etc.) that are exactly on top of each other.",

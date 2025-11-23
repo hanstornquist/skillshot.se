@@ -2,6 +2,11 @@
   "id": "ejection",
   "menuName": "Ejection Charge",
   "showInMenu": false,
+  "meta": {
+    "title": "Ejection Charge Calculator | SkillShot AB",
+    "description": "Calculate black powder charges for model rocket recovery systems.",
+    "image": "/images/SkillShot.png"
+  },
   "heading": "Ejection Charge",
   "isDarkMode": true,
   "preamble": "Calculate black powder charges for model rocket recovery systems.",
