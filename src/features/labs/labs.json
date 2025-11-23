@@ -3,6 +3,7 @@
   "menuName": "Labs",
   "showInMenu": true,
   "heading": "Labs",
+  "isDarkMode": false,
   "preamble": "Experimental tools and prototypes.",
   "links": [
     {

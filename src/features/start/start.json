@@ -3,6 +3,7 @@
   "menuName": "Start",
   "showInMenu": true,
   "heading": "SkillShot AB",
+  "isDarkMode": false,
   "preamble": "We build dependable software and cloud platforms for airlines, banks and commerce brands.",
   "mainBody": "SkillShot AB was started in 2016 by Hans Törnquist. We are a small team of senior engineers who plan architectures, build modern React front-ends, deliver Node.js and .NET backends, run services in Kubernetes and Azure, and automate releases with CI/CD. Most of our work happens inside airline and banking teams where uptime and compliance are non-negotiable.\n\nCustomers bring us in when teams need extra hands or a calm partner for complex deliveries. We specialise in regulated industries where reliability, security and clear communication matter every day.\n\nTypical assignments include:\n<ul><li>Rebuilding booking flows and disruption tools for airlines</li><li>Refreshing digital banking journeys and internal advisor portals</li><li>Adding observability, automation and performance guardrails to ageing platforms</li></ul>\n\nIf you want experienced engineers who understand regulated industries and deliver without fuss, SkillShot is ready to help.",
   "statusSection": {

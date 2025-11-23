@@ -3,6 +3,7 @@
   "menuName": "CV",
   "showInMenu": true,
   "heading": "Hans Törnquist",
+  "isDarkMode": false,
   "preamble": "System developer",
   "mainBody": "I have spent more than two decades designing and building digital products for airlines, banks and commerce brands. My work moves between solution architecture and hands-on engineering, covering React interfaces, Node.js and .NET services, container platforms and the automation that keeps them running. I enjoy taking complicated legacy estates, breaking the work into pragmatic steps and leading teams through the change so the organisation sees results quickly. The projects below show how I balance architecture, delivery and mentoring to keep platforms secure, observable and easy for developers to evolve.",
   "project": {

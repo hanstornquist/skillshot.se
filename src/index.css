@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* Force dark mode to rely on the .dark class, overriding system preference */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-skillshot: #f05a28;
   --color-skillshot-hover: #d04a18;
@@ -13,6 +16,11 @@ body {
   font-family: var(--font-sans);
   background-color: #f5f5f5;
   color: #111;
+}
+
+.dark body {
+  background-color: #111827; /* gray-900 */
+  color: #fff;
 }
 
 #root {

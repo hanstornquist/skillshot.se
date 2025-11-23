@@ -3,7 +3,7 @@ const logoSrc = `${baseUrl}images/SkillShot.png`;
 
 function Header({ tabs, activeTab, onTabChange, isScrolled }) {
   return (
-    <header className="w-full border-b-2 border-black bg-white z-50 flex-none">
+    <header className="w-full border-b-2 border-black dark:border-gray-700 bg-white dark:bg-gray-900 z-50 flex-none transition-colors duration-200">
       <div className="mx-auto max-w-7xl px-4">
         <div className="flex flex-col items-center justify-between py-6 sm:flex-row">
           <div className="mb-6 sm:mb-0">
@@ -32,8 +32,8 @@ function Header({ tabs, activeTab, onTabChange, isScrolled }) {
                     href={`#${tab.id}`}
                     className={`block px-4 py-2 transition-all ${
                       tab.id === activeTab
-                        ? "bg-black text-white font-bold"
-                        : "text-gray-500 hover:text-black hover:bg-gray-100"
+                        ? "bg-black text-white font-bold dark:bg-white dark:text-black"
+                        : "text-gray-500 hover:text-black hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800"
                     }`}
                     onClick={(event) => {
                       event.preventDefault();

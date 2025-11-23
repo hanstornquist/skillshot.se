@@ -154,6 +154,21 @@ function App() {
     }
   }, [activeTab, defaultTab]);
 
+  useEffect(() => {
+    const page = pageConfig.find((item) => item.id === activeTab);
+    console.log("Theme update:", {
+      activeTab,
+      pageId: page?.id,
+      isDarkMode: page?.data?.isDarkMode,
+    });
+
+    if (page?.data?.isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [activeTab, pageConfig]);
+
   const handleTabChange = (tabId) => {
     if (tabId === activeTab) {
       // If clicking the same tab, just scroll to top
@@ -182,7 +197,7 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden">
+    <div className="flex flex-col h-screen overflow-hidden dark:bg-gray-900 dark:text-white transition-colors duration-300">
       <Header
         tabs={tabs}
         activeTab={PARENT_MAP[activeTab] || activeTab}
