@@ -12,7 +12,9 @@
       {
         "published": true,
         "href": "https://www.sas.se",
-        "heading": "SAS 2022-08 - Ongoing",
+        "heading": "SAS",
+        "startDate": "2022-08",
+        "endDate": "Ongoing",
         "preamble": "Developer in the team working with their web solutions for managing bookings and check in",
         "tools": [
           "NodeJS",
@@ -24,13 +26,15 @@
           "JavaScript",
           "React",
           "Responsive design",
-          "Single-page application"
+          "Micro frontends"
         ]
       },
       {
         "published": true,
         "href": "https://www.marginalen.se",
-        "heading": "Marginalen Bank 2016-10 - 2022-08",
+        "heading": "Marginalen Bank",
+        "startDate": "2016-10",
+        "endDate": "2022-08",
         "preamble": "Solution architect and lead programmer in the project of development their web solutions",
         "tools": [
           "Visual Studio 2019",
@@ -49,7 +53,9 @@
       {
         "published": true,
         "href": "https://santanderconsumer.se",
-        "heading": "Santander Consumer Bank 2015-12 - 2016-10",
+        "heading": "Santander Consumer Bank",
+        "startDate": "2015-12",
+        "endDate": "2016-10",
         "preamble": "Solution architect in the project of development new functionallity on their Internet banking solution",
         "tools": [
           "BankID (mobile, card and file)",
@@ -66,7 +72,9 @@
       {
         "published": true,
         "href": "http://www.bemz.com/",
-        "heading": "BEMZ 2015-08 - 2015-12",
+        "heading": "BEMZ",
+        "startDate": "2015-08",
+        "endDate": "2015-12",
         "preamble": "System developer in the project of the development of a new e-commerce solution",
         "tools": [
           "Visual Studio 2015",
@@ -83,7 +91,9 @@
       {
         "published": true,
         "href": "http://www.transdev.se/",
-        "heading": "Transdev 2015-03 to 2015-08",
+        "heading": "Transdev",
+        "startDate": "2015-03",
+        "endDate": "2015-08",
         "preamble": "Tech lead in the project of the development of a new intranet",
         "tools": [
           "Visual Studio 2015",
@@ -100,7 +110,9 @@
       {
         "published": true,
         "href": "http://www.icagruppen.se",
-        "heading": "ICA Gruppen 2014-01 to 2014-03",
+        "heading": "ICA Gruppen",
+        "startDate": "2014-01",
+        "endDate": "2014-03",
         "preamble": "Tech lead in the project of the development of the new corprate web site",
         "tools": [
           "Visual Studio 2012",
@@ -116,7 +128,9 @@
       {
         "published": true,
         "href": "http://www.landshypotek.se",
-        "heading": "Landshypotek 2014-01 to 2014-03",
+        "heading": "Landshypotek",
+        "startDate": "2014-01",
+        "endDate": "2014-03",
         "preamble": "Tech lead in the development of a new web site",
         "tools": [
           "Visual Studio 2012",
@@ -131,7 +145,9 @@
       {
         "published": true,
         "href": "https://santanderconsumer.se",
-        "heading": "Santander Consumer Bank 2013-09 to 2015-03",
+        "heading": "Santander Consumer Bank",
+        "startDate": "2013-09",
+        "endDate": "2015-03",
         "preamble": "Solution architect in the project of development of a new Internet banking solution for their customers and upgrading of their server park to EPiServer CMS 7",
         "tools": [
           "BankID (mobile, card and file)",
@@ -148,7 +164,9 @@
       {
         "published": true,
         "href": "http://kdapotek.se",
-        "heading": "Kronans Apotek 2013-09 to 2015-02",
+        "heading": "Kronans Apotek",
+        "startDate": "2013-09",
+        "endDate": "2015-02",
         "preamble": "Tech lead in the redesign project and integration between 1177 Vårdguinden and Kronans Apotek",
         "tools": [
           "Visual Studio 2012",
@@ -161,7 +179,9 @@
       {
         "published": true,
         "href": "http://www.riksbyggen.se",
-        "heading": "Riksbyggen 2011-09 to 2013-09",
+        "heading": "Riksbyggen",
+        "startDate": "2011-09",
+        "endDate": "2013-09",
         "preamble": "Extranet for all customers to Riksbyggen, in this project I started as a system developer and ended as tech lead",
         "tools": [
           "Visual Studio 10",
@@ -174,7 +194,9 @@
       {
         "published": true,
         "href": "http://www.jm.se",
-        "heading": "JM AB 2007-03 to 2011-08",
+        "heading": "JM AB",
+        "startDate": "2007-03",
+        "endDate": "2011-08",
         "preamble": "System developer with architectural responsibility for all corporate websites, including designing JM's fully redundant server platform for minimal downtime",
         "tools": [
           "Visual Studio 10",
@@ -194,31 +216,37 @@
     "heading": "Employments",
     "employments": [
       {
-        "date": "2016-04",
+        "startDate": "2016-04",
+        "endDate": "Ongoing",
         "heading": "Founder and owner, SkillShot AB",
         "preamble": "IT consultant within Solution architecture and development using EPiServer/Optimizely CMS and .NET"
       },
       {
-        "date": "2015-08 to 2016-04",
+        "startDate": "2015-08",
+        "endDate": "2016-04",
         "heading": "Solution architect, Making Waves Sweden",
         "preamble": "IT consultant within Solution architecture and development using EPiServer and .NET"
       },
       {
-        "date": "2011-09 to 2015-08",
+        "startDate": "2011-09",
+        "endDate": "2015-08",
         "heading": "Solution architect, Know IT Reaktor Stockholm AB",
         "preamble": "IT consultant within Solution architecture and development using EPiServer and .NET"
       },
       {
-        "date": "2007-03 to 2011-08",
+        "startDate": "2007-03",
+        "endDate": "2011-08",
         "heading": "Solution architect/developer, JM AB, Stockholm"
       },
       {
-        "date": "2006-10 to 2007-03",
+        "startDate": "2006-10",
+        "endDate": "2007-03",
         "heading": "Technician, Selecta AB, Stockholm",
         "preamble": "Technician with responsibilities for all Selectas equipment in Kungsholmen, Stockholm"
       },
       {
-        "date": "2003-06 to 2006-10",
+        "startDate": "2003-06",
+        "endDate": "2006-10",
         "heading": "Sails person, Clas Ohlson AB Gallerian, Hamngatan Stockholm",
         "preamble": "Full-and part-time employee with duties consisted of general shop work such as cashier, information personal, customer service, counter sales and replenishment."
       }
@@ -228,16 +256,19 @@
     "heading": "Educations",
     "educations": [
       {
-        "date": "2001 - 2005",
+        "startDate": "2001",
+        "endDate": "2005",
         "heading": "Master of Science, IT-program 180p, KTH, Stockholm"
       },
       {
-        "date": "2000 - 2001",
+        "startDate": "2000",
+        "endDate": "2001",
         "heading": "Technical base year, KTH, Stockholm",
         "preamble": "Supplementation for further studies in Master of Science programs at KTH"
       },
       {
-        "date": "2000",
+        "startDate": "2000",
+        "endDate": "2000",
         "heading": "Statistics 20p, Stockholm University"
       }
     ]

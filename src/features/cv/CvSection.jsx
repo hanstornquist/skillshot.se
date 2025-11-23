@@ -34,7 +34,11 @@ function CvSection({ data }) {
       if (project?.projects) {
         project.projects.forEach((p) => {
           if (p.published) {
-            const id = `proj-${p.heading.replace(/\s+/g, "-").toLowerCase()}`;
+            const id = `proj-${p.heading
+              .replace(/\s+/g, "-")
+              .toLowerCase()}-${p.startDate
+              ?.replace(/[^a-z0-9]/gi, "-")
+              .toLowerCase()}`;
             const el = document.getElementById(id);
             if (el) observer.observe(el);
           }
@@ -107,29 +111,27 @@ function CvSection({ data }) {
                   <ul className="space-y-1 pl-2 border-l border-gray-200">
                     {project.projects
                       ?.filter((p) => p.published)
-                      .map((p) => (
-                        <li key={p.heading}>
-                          <button
-                            onClick={() =>
-                              scrollTo(
-                                `proj-${p.heading
-                                  .replace(/\s+/g, "-")
-                                  .toLowerCase()}`
-                              )
-                            }
-                            className={`text-xs text-left block py-0.5 truncate w-full transition-colors ${
-                              activeSection ===
-                              `proj-${p.heading
-                                .replace(/\s+/g, "-")
-                                .toLowerCase()}`
-                                ? "text-skillshot font-bold"
-                                : "text-gray-500 hover:text-skillshot"
-                            }`}
-                          >
-                            {p.heading}
-                          </button>
-                        </li>
-                      ))}
+                      .map((p) => {
+                        const id = `proj-${p.heading
+                          .replace(/\s+/g, "-")
+                          .toLowerCase()}-${p.startDate
+                          ?.replace(/[^a-z0-9]/gi, "-")
+                          .toLowerCase()}`;
+                        return (
+                          <li key={id}>
+                            <button
+                              onClick={() => scrollTo(id)}
+                              className={`text-xs text-left block py-0.5 truncate w-full transition-colors ${
+                                activeSection === id
+                                  ? "text-skillshot font-bold"
+                                  : "text-gray-500 hover:text-skillshot"
+                              }`}
+                            >
+                              {p.heading}
+                            </button>
+                          </li>
+                        );
+                      })}
                   </ul>
                 </div>
               )}
@@ -185,51 +187,62 @@ function CvSection({ data }) {
               <div className="grid gap-8 grid-cols-1">
                 {project.projects
                   ?.filter((proj) => proj.published)
-                  .map((proj) => (
-                    <div
-                      key={proj.heading}
-                      id={`proj-${proj.heading
-                        .replace(/\s+/g, "-")
-                        .toLowerCase()}`}
-                      className="scroll-mt-24 group flex flex-col justify-between border-2 border-black bg-white p-6 transition-all hover:bg-orange-50 hover:translate-x-1 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-                    >
-                      <a
-                        href={proj.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="block h-full"
+                  .map((proj) => {
+                    const id = `proj-${proj.heading
+                      .replace(/\s+/g, "-")
+                      .toLowerCase()}-${proj.startDate
+                      ?.replace(/[^a-z0-9]/gi, "-")
+                      .toLowerCase()}`;
+                    return (
+                      <div
+                        key={id}
+                        id={id}
+                        className="scroll-mt-24 group flex flex-col justify-between border-2 border-black bg-white p-6 transition-all hover:bg-orange-50 hover:translate-x-1 hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                       >
-                        <div>
-                          <h4 className="mb-3 text-xl font-bold uppercase tracking-tight text-black group-hover:text-skillshot">
-                            {proj.heading}
-                          </h4>
-                          <p className="mb-6 text-gray-600 leading-relaxed text-sm">
-                            {proj.preamble}
-                          </p>
-                        </div>
-
-                        {proj.tools?.length ? (
-                          <div className="mt-auto">
-                            <div className="flex flex-wrap gap-2">
-                              {proj.tools.map((tool) => (
-                                <span
-                                  key={tool}
-                                  className="font-mono text-xs border border-gray-300 px-2 py-1 text-gray-500 uppercase"
-                                >
-                                  {tool}
-                                </span>
-                              ))}
-                            </div>
+                        <a
+                          href={proj.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="block h-full"
+                        >
+                          <div>
+                            {(proj.startDate || proj.endDate) && (
+                              <span className="font-mono text-xs font-bold text-gray-400 uppercase tracking-wider block mb-2 group-hover:text-skillshot transition-colors">
+                                {proj.startDate}
+                                {proj.endDate ? ` - ${proj.endDate}` : ""}
+                              </span>
+                            )}
+                            <h4 className="mb-3 text-xl font-bold uppercase tracking-tight text-black group-hover:text-skillshot">
+                              {proj.heading}
+                            </h4>
+                            <p className="mb-6 text-gray-600 leading-relaxed text-sm">
+                              {proj.preamble}
+                            </p>
                           </div>
-                        ) : null}
-                        {proj.footer && (
-                          <p className="mt-4 text-xs text-gray-400 font-mono">
-                            {proj.footer}
-                          </p>
-                        )}
-                      </a>
-                    </div>
-                  ))}
+
+                          {proj.tools?.length ? (
+                            <div className="mt-auto">
+                              <div className="flex flex-wrap gap-2">
+                                {proj.tools.map((tool) => (
+                                  <span
+                                    key={tool}
+                                    className="font-mono text-xs border border-gray-300 px-2 py-1 text-gray-500 uppercase"
+                                  >
+                                    {tool}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          ) : null}
+                          {proj.footer && (
+                            <p className="mt-4 text-xs text-gray-400 font-mono">
+                              {proj.footer}
+                            </p>
+                          )}
+                        </a>
+                      </div>
+                    );
+                  })}
               </div>
             </div>
           )}
@@ -243,12 +256,13 @@ function CvSection({ data }) {
               <div className="space-y-12">
                 {employment.employments?.map((item) => (
                   <div
-                    key={`${item.heading}-${item.date}`}
+                    key={`${item.heading}-${item.startDate}`}
                     className="grid grid-cols-1 gap-2 border-l-2 border-gray-200 pl-6 hover:border-skillshot transition-colors duration-300"
                   >
                     <div>
                       <span className="font-mono text-sm font-bold text-skillshot uppercase tracking-wider block mb-1">
-                        {item.date}
+                        {item.startDate}
+                        {item.endDate ? ` - ${item.endDate}` : ""}
                       </span>
                     </div>
                     <div>
@@ -276,12 +290,13 @@ function CvSection({ data }) {
               <div className="space-y-12">
                 {education.educations?.map((item) => (
                   <div
-                    key={`${item.heading}-${item.date}`}
+                    key={`${item.heading}-${item.startDate}`}
                     className="grid grid-cols-1 gap-2 border-l-2 border-gray-200 pl-6 hover:border-black transition-colors duration-300"
                   >
                     <div>
                       <span className="font-mono text-sm font-bold text-gray-400 uppercase tracking-wider block mb-1">
-                        {item.date}
+                        {item.startDate}
+                        {item.endDate ? ` - ${item.endDate}` : ""}
                       </span>
                     </div>
                     <div>
