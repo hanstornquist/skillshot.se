@@ -1,8 +1,7 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { processDxfContent } from "./dxfHelpers";
 
 const DxfSection = ({ data }) => {
-  const [dxfContent, setDxfContent] = useState("");
   const [optimizedDxf, setOptimizedDxf] = useState("");
   const [stats, setStats] = useState(null);
   const [fileName, setFileName] = useState("");
@@ -15,7 +14,6 @@ const DxfSection = ({ data }) => {
       const reader = new FileReader();
       reader.onload = (e) => {
         const content = e.target.result;
-        setDxfContent(content);
         setOptimizedDxf("");
         setStats(null);
         setPreviewData(null);
@@ -84,7 +82,7 @@ const DxfSection = ({ data }) => {
             vectorEffect="non-scaling-stroke"
           />
         );
-      case "ARC":
+      case "ARC": {
         // SVG Arc: A rx ry x-axis-rotation large-arc-flag sweep-flag x y
         // DXF Arc: Center(10,20), Radius(40), StartAngle(50), EndAngle(51)
         const cx = props[10] || 0;
@@ -127,7 +125,8 @@ const DxfSection = ({ data }) => {
             vectorEffect="non-scaling-stroke"
           />
         );
-      case "LWPOLYLINE":
+      }
+      case "LWPOLYLINE": {
         if (!vertices || vertices.length < 2) return null;
         const pathData = vertices
           .map((v, i) => `${i === 0 ? "M" : "L"} ${v.x} ${-v.y}`)
@@ -146,6 +145,7 @@ const DxfSection = ({ data }) => {
             vectorEffect="non-scaling-stroke"
           />
         );
+      }
       default:
         return null;
     }
@@ -165,96 +165,80 @@ const DxfSection = ({ data }) => {
   };
 
   return (
-    <section className="dxf-section">
-      <h3>{data.heading}</h3>
-      <p>{data.preamble}</p>
+    <section className="max-w-5xl mx-auto px-4 py-12">
+      <div className="mb-12 border-l-4 border-skillshot pl-8">
+        <h2 className="mb-6 text-4xl font-black tracking-tighter text-black sm:text-6xl md:text-8xl uppercase break-words">
+          {data.heading}
+        </h2>
+        <p className="max-w-2xl text-2xl font-light leading-tight text-gray-800 sm:text-3xl font-mono">
+          {data.preamble}
+        </p>
+      </div>
 
       <div
-        style={{
-          marginBottom: "2rem",
-          border: isDragging ? "2px dashed #f05a28" : "2px dashed #ccc",
-          borderRadius: "8px",
-          padding: "2rem",
-          textAlign: "center",
-          backgroundColor: isDragging
-            ? "rgba(240, 90, 40, 0.05)"
-            : "transparent",
-          transition: "all 0.2s ease",
-        }}
+        className={`mb-12 border-2 border-dashed p-12 text-center transition-all ${
+          isDragging
+            ? "border-skillshot bg-orange-50"
+            : "border-gray-300 hover:border-gray-400"
+        }`}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
       >
-        <p>{data.dragDropText}</p>
+        <p className="mb-6 font-mono text-sm uppercase tracking-widest text-gray-500">
+          {data.dragDropText}
+        </p>
         <input
           type="file"
           accept=".dxf"
           onChange={handleFileUpload}
-          style={{ display: "none" }}
+          className="hidden"
           id="dxf-upload"
         />
         <label
           htmlFor="dxf-upload"
-          className="button button-skillshot"
-          style={{
-            fontWeight: "bold",
-            padding: "0 30px",
-            height: "48px",
-            lineHeight: "48px",
-            borderRadius: "4px",
-            textTransform: "uppercase",
-            letterSpacing: "1px",
-            fontSize: "12px",
-            display: "inline-block",
-            cursor: "pointer",
-          }}
+          className="inline-block bg-black text-white font-mono text-xs font-bold py-4 px-10 uppercase tracking-widest hover:bg-skillshot transition-colors cursor-pointer"
         >
           {data.selectFileButton}
         </label>
         {fileName && (
-          <p style={{ marginTop: "1rem" }}>
-            {data.selectedFilePrefix}
-            <strong>{fileName}</strong>
-          </p>
+          <div className="mt-6 font-mono text-sm">
+            <span className="text-gray-500">{data.selectedFilePrefix}</span>
+            <span className="font-bold text-black ml-2">{fileName}</span>
+          </div>
         )}
       </div>
 
       {previewData && (
-        <div style={{ marginBottom: "2rem" }}>
-          <h5>{data.previewHeading}</h5>
-          <div style={{ border: "1px solid #eee", height: "400px" }}>
+        <div className="mb-12">
+          <h5 className="font-mono text-xs uppercase tracking-widest text-gray-500 mb-4">
+            {data.previewHeading}
+          </h5>
+          <div className="border-2 border-black h-[500px] bg-white p-4">
             <svg
               viewBox={previewData.viewBox}
-              style={{ width: "100%", height: "100%" }}
+              className="w-full h-full"
               preserveAspectRatio="xMidYMid meet"
             >
               {previewData.unique.map((ent, i) =>
-                renderEntity(ent, `u-${i}`, "#333")
+                renderEntity(ent, `u-${i}`, "#000")
               )}
               {previewData.duplicates.map((ent, i) =>
-                renderEntity(ent, `d-${i}`, "red", 2)
+                renderEntity(ent, `d-${i}`, "#f05a28", 2)
               )}
             </svg>
           </div>
-          <p style={{ fontSize: "0.8em", color: "#666" }}>{data.previewNote}</p>
+          <p className="font-mono text-xs text-gray-400 mt-2">
+            {data.previewNote}
+          </p>
         </div>
       )}
 
-      <div style={{ marginTop: "2rem", display: "flex", gap: "1rem" }}>
+      <div className="flex gap-4">
         {optimizedDxf && (
           <button
-            className="button button-skillshot"
+            className="bg-skillshot text-white font-mono text-xs font-bold py-4 px-10 uppercase tracking-widest hover:bg-black transition-colors"
             onClick={downloadDxf}
-            style={{
-              fontWeight: "bold",
-              padding: "0 30px",
-              height: "48px",
-              lineHeight: "48px",
-              borderRadius: "4px",
-              textTransform: "uppercase",
-              letterSpacing: "1px",
-              fontSize: "12px",
-            }}
           >
             {data.downloadButton}
           </button>
@@ -262,25 +246,28 @@ const DxfSection = ({ data }) => {
       </div>
 
       {stats && (
-        <div
-          style={{
-            marginTop: "1rem",
-            padding: "1rem",
-            background: "#e1f5fe",
-            borderRadius: "4px",
-          }}
-        >
-          <strong>{data.resultsHeading}</strong>
-          <ul>
+        <div className="mt-8 border-l-4 border-skillshot pl-6 py-2">
+          <strong className="block font-mono text-xs uppercase tracking-widest text-gray-500 mb-2">
+            {data.resultsHeading}
+          </strong>
+          <ul className="space-y-1 font-mono text-sm">
             <li>
-              {data.removedCountPrefix}
-              {stats.removedCount}
-              {data.removedCountSuffix}
+              <span className="text-gray-600">{data.removedCountPrefix}</span>
+              <span className="font-bold text-black ml-2">
+                {stats.removedCount}
+              </span>
+              <span className="text-gray-600 ml-1">
+                {data.removedCountSuffix}
+              </span>
             </li>
             <li>
-              {data.sizeReducedPrefix}
-              {((stats.originalSize - stats.optimizedSize) / 1024).toFixed(2)}
-              {data.sizeReducedSuffix}
+              <span className="text-gray-600">{data.sizeReducedPrefix}</span>
+              <span className="font-bold text-black ml-2">
+                {((stats.originalSize - stats.optimizedSize) / 1024).toFixed(2)}
+              </span>
+              <span className="text-gray-600 ml-1">
+                {data.sizeReducedSuffix}
+              </span>
             </li>
           </ul>
         </div>

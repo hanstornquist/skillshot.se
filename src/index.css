@@ -1,6 +1,18 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-skillshot: #f05a28;
+  --color-skillshot-hover: #d04a18;
+  --color-skillshot-active: #b03a08;
+  --font-sans: "Inter", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Roboto Mono", monospace;
+}
+
 body {
-  margin: 0;
-  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
+  background-color: #f5f5f5;
+  color: #111;
 }
 
 #root {

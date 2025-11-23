@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import StartSection from "./features/start/StartSection.jsx";
@@ -15,15 +15,16 @@ const COMPONENT_MAP = {
 };
 
 function App() {
-  const pageConfig = useMemo(() => {
-    const pages = [startData, cvData, dxfData].map((data) => ({
+  // Re-create pageConfig on every render to support HMR updates
+  const pageConfig = [startData, cvData, dxfData]
+    .map((data) => ({
       id: data.id,
       data,
       component: COMPONENT_MAP[data.id] ?? StartSection,
-    }));
-    return pages.filter((page) => page.id);
-  }, []);
+    }))
+    .filter((page) => page.id);
 
+  // Memoize tabs based on pageConfig structure (JSON content changes won't break this unless structure changes)
   const tabs = useMemo(
     () =>
       pageConfig
@@ -32,7 +33,8 @@ function App() {
           id: page.id,
           label: page.data?.menuName || page.id,
         })),
-    [pageConfig]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [JSON.stringify(pageConfig.map((p) => p.id + p.data?.menuName))]
   );
 
   const defaultTab = tabs[0]?.id || pageConfig[0]?.id || "";
@@ -43,32 +45,41 @@ function App() {
     return validIds.has(path) ? path : tabs[0]?.id || startData.id;
   });
 
+  // Stable lookup function
   const isValidTab = useMemo(() => {
     const lookup = new Set(pageConfig.map((page) => page.id));
     return (candidate) => lookup.has(candidate);
-  }, [pageConfig]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(pageConfig.map((p) => p.id))]);
+
+  // Use a ref to access the latest isValidTab in the effect without triggering re-runs
+  const isValidTabRef = useRef(isValidTab);
+  useEffect(() => {
+    isValidTabRef.current = isValidTab;
+  }, [isValidTab]);
 
   useEffect(() => {
     const getTabFromPath = () => {
-      const path = window.location.pathname.substring(1); // Remove leading slash
+      const path = window.location.pathname.substring(1);
       return path || defaultTab;
     };
 
+    // Only set active tab if it's actually different to avoid loops
     const current = getTabFromPath();
-    if (isValidTab(current)) {
-      setActiveTab(current);
+    if (isValidTabRef.current(current)) {
+      setActiveTab((prev) => (prev !== current ? current : prev));
     }
 
     const handlePopState = () => {
       const next = getTabFromPath();
-      if (isValidTab(next)) {
+      if (isValidTabRef.current(next)) {
         setActiveTab(next);
       }
     };
 
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
-  }, [isValidTab, defaultTab]);
+  }, [defaultTab]); // Removed isValidTab from dependencies
 
   useEffect(() => {
     const path = window.location.pathname.substring(1);
@@ -89,17 +100,15 @@ function App() {
   };
 
   return (
-    <>
+    <div className="flex flex-col h-screen overflow-hidden">
       <Header tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
-      <article>
-        <div className="container">
-          <div className="sixteen columns" id="contentArea">
-            {renderActiveSection()}
-          </div>
+      <main className="flex-1 overflow-y-auto scroll-smooth">
+        <div className="container mx-auto px-4">
+          <div className="w-full">{renderActiveSection()}</div>
         </div>
-      </article>
+      </main>
       <Footer />
-    </>
+    </div>
   );
 }
 

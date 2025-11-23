@@ -15,6 +15,12 @@ export default [
         document: "readonly",
         console: "readonly",
         process: "readonly",
+        FileReader: "readonly",
+        Blob: "readonly",
+        URL: "readonly",
+        setInterval: "readonly",
+        clearInterval: "readonly",
+        IntersectionObserver: "readonly",
       },
     },
     settings: {
