@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { processDxfContent } from "./dxfHelpers";
+import DxfCanvas from "./DxfCanvas";
 
 const DxfSection = ({ data }) => {
   const [optimizedDxf, setOptimizedDxf] = useState("");
@@ -7,6 +8,24 @@ const DxfSection = ({ data }) => {
   const [fileName, setFileName] = useState("");
   const [isDragging, setIsDragging] = useState(false);
   const [previewData, setPreviewData] = useState(null);
+  const containerRef = useRef(null);
+  const [containerWidth, setContainerWidth] = useState(800);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      if (containerRef.current) {
+        setContainerWidth(containerRef.current.offsetWidth);
+      }
+    };
+
+    // Update width when previewData changes (and element appears)
+    if (previewData) {
+      updateWidth();
+    }
+
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, [previewData]);
 
   const handleFile = (file) => {
     if (file) {
@@ -52,112 +71,13 @@ const DxfSection = ({ data }) => {
     }
   };
 
-  const renderEntity = (entity, key, color = "black", strokeWidth = 1) => {
-    const { type, props, vertices } = entity;
-
-    switch (type) {
-      case "LINE":
-        return (
-          <line
-            key={key}
-            x1={props[10] || 0}
-            y1={-(props[20] || 0)} // Flip Y for SVG
-            x2={props[11] || 0}
-            y2={-(props[21] || 0)}
-            stroke={color}
-            strokeWidth={strokeWidth}
-            vectorEffect="non-scaling-stroke"
-          />
-        );
-      case "CIRCLE":
-        return (
-          <circle
-            key={key}
-            cx={props[10] || 0}
-            cy={-(props[20] || 0)}
-            r={props[40] || 0}
-            fill="none"
-            stroke={color}
-            strokeWidth={strokeWidth}
-            vectorEffect="non-scaling-stroke"
-          />
-        );
-      case "ARC": {
-        // SVG Arc: A rx ry x-axis-rotation large-arc-flag sweep-flag x y
-        // DXF Arc: Center(10,20), Radius(40), StartAngle(50), EndAngle(51)
-        const cx = props[10] || 0;
-        const cy = -(props[20] || 0);
-        const r = props[40] || 0;
-        let startAngle = props[50] || 0;
-        let endAngle = props[51] || 0;
-
-        // Convert degrees to radians
-        const startRad = (startAngle * Math.PI) / 180;
-        const endRad = (endAngle * Math.PI) / 180;
-
-        // Calculate start and end points
-        // Note: DXF angles are CCW from X-axis. SVG Y is down.
-        // In standard math (Y up), x = r*cos(a), y = r*sin(a)
-        // In SVG (Y down), y = -r*sin(a) if we want to match visual appearance
-
-        const x1 = cx + r * Math.cos(startRad);
-        const y1 = cy - r * Math.sin(startRad);
-        const x2 = cx + r * Math.cos(endRad);
-        const y2 = cy - r * Math.sin(endRad);
-
-        // Large arc flag
-        let diffAngle = endAngle - startAngle;
-        if (diffAngle < 0) diffAngle += 360;
-        const largeArc = diffAngle > 180 ? 1 : 0;
-
-        // Sweep flag: DXF is CCW. In SVG (Y down), CCW is actually sweep=0 if we look at it?
-        // Let's try sweep=0 for CCW in Y-down system.
-
-        const d = `M ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 0 ${x2} ${y2}`;
-
-        return (
-          <path
-            key={key}
-            d={d}
-            fill="none"
-            stroke={color}
-            strokeWidth={strokeWidth}
-            vectorEffect="non-scaling-stroke"
-          />
-        );
-      }
-      case "LWPOLYLINE": {
-        if (!vertices || vertices.length < 2) return null;
-        const pathData = vertices
-          .map((v, i) => `${i === 0 ? "M" : "L"} ${v.x} ${-v.y}`)
-          .join(" ");
-
-        const isClosed = (props[70] & 1) === 1;
-        const polyD = pathData + (isClosed ? " Z" : "");
-
-        return (
-          <path
-            key={key}
-            d={polyD}
-            fill="none"
-            stroke={color}
-            strokeWidth={strokeWidth}
-            vectorEffect="non-scaling-stroke"
-          />
-        );
-      }
-      default:
-        return null;
-    }
-  };
-
   const downloadDxf = () => {
     if (!optimizedDxf) return;
     const blob = new Blob([optimizedDxf], { type: "application/dxf" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `optimized_${fileName}`;
+    a.download = `${data.optimizedFilePrefix || "optimized_"}${fileName}`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -214,23 +134,21 @@ const DxfSection = ({ data }) => {
           <h5 className="font-mono text-xs uppercase tracking-widest text-gray-500 mb-4">
             {data.previewHeading}
           </h5>
-          <div className="border-2 border-black h-[500px] bg-white p-4">
-            <svg
-              viewBox={previewData.viewBox}
-              className="w-full h-full"
-              preserveAspectRatio="xMidYMid meet"
-            >
-              {previewData.unique.map((ent, i) =>
-                renderEntity(ent, `u-${i}`, "#000")
-              )}
-              {previewData.duplicates.map((ent, i) =>
-                renderEntity(ent, `d-${i}`, "#f05a28", 2)
-              )}
-            </svg>
+          <div ref={containerRef} className="w-full">
+            <DxfCanvas data={previewData} width={containerWidth} height={500} />
           </div>
           <p className="font-mono text-xs text-gray-400 mt-2">
             {data.previewNote}
           </p>
+          {previewData.unsupportedTypes &&
+            previewData.unsupportedTypes.length > 0 && (
+              <div className="mt-4 p-4 bg-yellow-50 border border-yellow-200 text-yellow-800 font-mono text-xs">
+                <strong>{data.unsupportedWarningTitle}</strong>{" "}
+                {data.unsupportedWarningPrefix}
+                {previewData.unsupportedTypes.join(", ")}
+                {data.unsupportedWarningSuffix}
+              </div>
+            )}
         </div>
       )}
 
