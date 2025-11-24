@@ -16,10 +16,13 @@ const EjectionChargeCalculator = ({ data, globalData, onNavigate }) => {
   const [calculatedShearPressure, setCalculatedShearPressure] = useState(0);
 
   const normalizeInput = (val) => {
+    let num = 0;
     if (typeof val === "string") {
-      return parseFloat(val.replace(",", ".")) || 0;
+      num = parseFloat(val.replace(",", ".")) || 0;
+    } else {
+      num = parseFloat(val) || 0;
     }
-    return parseFloat(val) || 0;
+    return Math.max(0, num);
   };
 
   useEffect(() => {
@@ -209,7 +212,12 @@ const EjectionChargeCalculator = ({ data, globalData, onNavigate }) => {
               type="text"
               inputMode="decimal"
               value={diameter}
-              onChange={(e) => setDiameter(e.target.value)}
+              onChange={(e) => {
+                const val = e.target.value;
+                if (val === "" || /^[0-9]*[.,]?[0-9]*$/.test(val)) {
+                  setDiameter(val);
+                }
+              }}
               className="w-full border-2 border-black dark:border-gray-600 dark:bg-gray-800 dark:text-white p-4 font-mono text-xl focus:outline-none focus:border-skillshot transition-colors"
               placeholder={data.inputs.diameter.placeholder[unitSystem]}
             />
@@ -223,7 +231,12 @@ const EjectionChargeCalculator = ({ data, globalData, onNavigate }) => {
               type="text"
               inputMode="decimal"
               value={length}
-              onChange={(e) => setLength(e.target.value)}
+              onChange={(e) => {
+                const val = e.target.value;
+                if (val === "" || /^[0-9]*[.,]?[0-9]*$/.test(val)) {
+                  setLength(val);
+                }
+              }}
               className="w-full border-2 border-black dark:border-gray-600 dark:bg-gray-800 dark:text-white p-4 font-mono text-xl focus:outline-none focus:border-skillshot transition-colors"
               placeholder={data.inputs.length.placeholder[unitSystem]}
             />
@@ -246,7 +259,9 @@ const EjectionChargeCalculator = ({ data, globalData, onNavigate }) => {
                   type="number"
                   min="0"
                   value={shearCount}
-                  onChange={(e) => setShearCount(parseInt(e.target.value) || 0)}
+                  onChange={(e) =>
+                    setShearCount(Math.max(0, parseInt(e.target.value) || 0))
+                  }
                   className="w-full border-2 border-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-white p-2 font-mono text-lg focus:outline-none focus:border-skillshot transition-colors"
                 />
               </div>
