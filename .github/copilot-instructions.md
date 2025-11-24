@@ -1,5 +1,9 @@
 # SkillShot.se Project Instructions
 
+## General Rules
+
+- **Do not commit code unless explicitly instructed to do so.**
+
 ## Architecture & Organization
 
 - **Feature-First Structure**: Code is organized by domain in `src/features/<domain>/`.

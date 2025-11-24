@@ -4,6 +4,8 @@ applyTo: "**"
 
 # Project Rules
 
+- **Do not commit code unless explicitly instructed to do so.**
+
 ## Folder Structure
 
 - **Feature-based Architecture**: Organize code by domain in `src/features/`.
