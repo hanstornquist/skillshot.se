@@ -166,7 +166,7 @@ const EjectionChargeCalculator = ({ data, globalData, onNavigate }) => {
 
   const applyShearPressure = () => {
     if (calculatedShearPressure > 0) {
-      setPressure(parseFloat(calculatedShearPressure.toFixed(1)));
+      setPressure(parseFloat(calculatedShearPressure.toFixed(2)));
     }
   };
 
@@ -215,7 +215,7 @@ const EjectionChargeCalculator = ({ data, globalData, onNavigate }) => {
         </p>
       </div>
 
-      <div className="grid gap-12 md:grid-cols-2">
+      <div className="grid gap-12 md:grid-cols-2 items-start">
         <div className="space-y-6">
           <div>
             <label className="block text-sm font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-2">
@@ -305,27 +305,55 @@ const EjectionChargeCalculator = ({ data, globalData, onNavigate }) => {
               </div>
             </div>
 
-            {calculatedShearPressure > 0 && (
-              <div className="bg-gray-50 dark:bg-gray-800 p-4 border border-gray-200 dark:border-gray-700 flex flex-col gap-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-xs font-bold uppercase text-gray-500 dark:text-gray-400">
-                    {data.inputs.shearPins.calculatedLabel}
-                  </span>
-                  <span className="font-mono font-bold dark:text-white">
-                    {parseFloat((calculatedShearPressure / 1.5).toFixed(1))}{" "}
-                    {common.units.pressure[unitSystem]}
-                  </span>
-                </div>
-                <button
-                  onClick={applyShearPressure}
-                  className="w-full bg-black text-white dark:bg-white dark:text-black py-2 px-4 text-xs font-bold uppercase tracking-widest hover:bg-skillshot hover:text-black dark:hover:bg-skillshot dark:hover:text-white transition-colors"
+            <div className="bg-gray-50 dark:bg-gray-800 p-4 border border-gray-200 dark:border-gray-700 flex flex-col gap-3">
+              <div className="flex justify-between items-center">
+                <span className="text-xs font-bold uppercase text-gray-500 dark:text-gray-400">
+                  {data.inputs.shearPins.calculatedLabel}
+                </span>
+                <span
+                  className={`font-mono font-bold ${
+                    calculatedShearPressure > 0
+                      ? "dark:text-white"
+                      : "text-gray-300 dark:text-gray-600"
+                  }`}
                 >
-                  {data.inputs.shearPins.applyButton} (
-                  {parseFloat(calculatedShearPressure.toFixed(1))}{" "}
-                  {common.units.pressure[unitSystem]})
-                </button>
+                  {calculatedShearPressure > 0
+                    ? parseFloat((calculatedShearPressure / 1.5).toFixed(2))
+                    : "0"}{" "}
+                  {common.units.pressure[unitSystem]}
+                </span>
               </div>
-            )}
+
+              <div className="flex justify-between items-center">
+                <span className="text-xs font-bold uppercase text-gray-500 dark:text-gray-400">
+                  {data.inputs.shearPins.safetyLabel}
+                </span>
+                <span
+                  className={`font-mono font-bold ${
+                    calculatedShearPressure > 0
+                      ? "text-skillshot"
+                      : "text-gray-300 dark:text-gray-600"
+                  }`}
+                >
+                  {calculatedShearPressure > 0
+                    ? parseFloat(calculatedShearPressure.toFixed(2))
+                    : "0"}{" "}
+                  {common.units.pressure[unitSystem]}
+                </span>
+              </div>
+
+              <button
+                onClick={applyShearPressure}
+                disabled={calculatedShearPressure <= 0}
+                className={`w-full mt-1 py-2 px-4 text-xs font-bold uppercase tracking-widest transition-colors ${
+                  calculatedShearPressure > 0
+                    ? "bg-black text-white dark:bg-white dark:text-black hover:bg-skillshot hover:text-black dark:hover:bg-skillshot dark:hover:text-white"
+                    : "bg-gray-200 text-gray-400 dark:bg-gray-700 dark:text-gray-500 cursor-not-allowed"
+                }`}
+              >
+                {data.inputs.shearPins.applyButton}
+              </button>
+            </div>
           </div>
 
           <div>

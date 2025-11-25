@@ -58,8 +58,9 @@
         { "name": "#4-40 Nylon", "forceN": 280, "forceLbs": 63 },
         { "name": "#6-32 Nylon", "forceN": 422, "forceLbs": 95 }
       ],
-      "calculatedLabel": "Est. Burst Pressure",
-      "applyButton": "Apply (+50% Safety)"
+      "calculatedLabel": "Pin Burst Pressure",
+      "safetyLabel": "Recommended Target (+50%)",
+      "applyButton": "Use Recommended Pressure"
     }
   },
   "results": {
