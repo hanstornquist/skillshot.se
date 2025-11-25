@@ -1,6 +1,7 @@
 {
   "meta": {
     "siteName": "SkillShot AB",
+    "siteUrl": "https://skillshot.se",
     "defaultImage": "/images/SkillShot.png",
     "twitterHandle": "@hanstornquist",
     "googleAnalyticsId": "G-WZ191RGNTG"

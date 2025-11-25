@@ -40,6 +40,17 @@ const MetaManager = ({ activeTab, pageConfig, globalData }) => {
       element.setAttribute(attribute, value);
     };
 
+    // Helper to update link tag
+    const updateLink = (rel, href) => {
+      let element = document.querySelector(`link[rel="${rel}"]`);
+      if (!element) {
+        element = document.createElement("link");
+        element.setAttribute("rel", rel);
+        document.head.appendChild(element);
+      }
+      element.setAttribute("href", href);
+    };
+
     updateMeta('meta[name="description"]', "content", description);
 
     updateMeta('meta[property="og:title"]', "content", title);
@@ -51,6 +62,31 @@ const MetaManager = ({ activeTab, pageConfig, globalData }) => {
     updateMeta('meta[property="twitter:description"]', "content", description);
     updateMeta('meta[property="twitter:image"]', "content", fullImageUrl);
     updateMeta('meta[property="twitter:url"]', "content", url);
+
+    // Canonical URL
+    // Remove query parameters for canonical URL
+    const canonicalUrl = window.location.href.split("?")[0];
+    updateLink("canonical", canonicalUrl);
+
+    // JSON-LD Structured Data
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: defaults.siteName || "SkillShot AB",
+      url: defaults.siteUrl || window.location.origin,
+      logo: fullImageUrl,
+      description:
+        defaults.description ||
+        "SkillShot AB - modern system development and architecture.",
+    };
+
+    let script = document.querySelector('script[type="application/ld+json"]');
+    if (!script) {
+      script = document.createElement("script");
+      script.setAttribute("type", "application/ld+json");
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(jsonLd);
   }, [activeTab, pageConfig, globalData]);
 
   return null; // This component doesn't render anything visible

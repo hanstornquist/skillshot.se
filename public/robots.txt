@@ -3,3 +3,4 @@
 
 User-agent: *
 
+Sitemap: https://skillshot.se/sitemap.xml
