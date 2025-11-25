@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, useRef } from "react";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import MetaManager from "./components/MetaManager.jsx";
+import GoogleAnalytics from "./components/GoogleAnalytics.jsx";
 import StartSection from "./features/start/StartSection.jsx";
 import CvSection from "./features/cv/CvSection.jsx";
 import DxfSection from "./features/dxf/DxfSection.jsx";
@@ -204,6 +205,7 @@ function App() {
         pageConfig={pageConfig}
         globalData={globalData}
       />
+      <GoogleAnalytics trackingId={globalData.meta?.googleAnalyticsId} />
       <Header
         tabs={tabs}
         activeTab={PARENT_MAP[activeTab] || activeTab}

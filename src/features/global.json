@@ -2,7 +2,8 @@
   "meta": {
     "siteName": "SkillShot AB",
     "defaultImage": "/images/SkillShot.png",
-    "twitterHandle": "@hanstornquist"
+    "twitterHandle": "@hanstornquist",
+    "googleAnalyticsId": "G-WZ191RGNTG"
   },
   "common": {
     "backArrow": "←",
