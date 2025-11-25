@@ -1,6 +1,8 @@
 import React from "react";
 
-const LabsSection = ({ data, onNavigate }) => {
+const LabsSection = ({ data, onNavigate, globalData }) => {
+  const openToolButton = globalData?.labs?.openToolButton || "Open Tool";
+
   return (
     <section className="max-w-5xl mx-auto px-4 py-12">
       <div className="mb-12 border-l-4 border-skillshot pl-8">
@@ -25,7 +27,7 @@ const LabsSection = ({ data, onNavigate }) => {
               {link.description}
             </p>
             <div className="mt-4 font-mono text-xs font-bold uppercase tracking-widest text-gray-400 group-hover:text-black">
-              Open Tool &rarr;
+              {openToolButton} &rarr;
             </div>
           </div>
         ))}

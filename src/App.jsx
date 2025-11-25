@@ -205,19 +205,20 @@ function App() {
         pageConfig={pageConfig}
         globalData={globalData}
       />
-      <GoogleAnalytics trackingId={globalData.meta?.googleAnalyticsId} />
+      <GoogleAnalytics trackingId={globalData?.meta?.googleAnalyticsId} />
       <Header
         tabs={tabs}
         activeTab={PARENT_MAP[activeTab] || activeTab}
         onTabChange={handleTabChange}
         isScrolled={isScrolled}
+        globalData={globalData}
       />
       <main ref={mainRef} className="flex-1 overflow-y-auto">
         <div className="container mx-auto px-4">
           <div className="w-full">{renderActiveSection()}</div>
         </div>
       </main>
-      <Footer />
+      <Footer globalData={globalData} />
     </div>
   );
 }

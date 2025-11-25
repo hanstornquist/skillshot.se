@@ -15,6 +15,17 @@ const EjectionChargeCalculator = ({ data, globalData, onNavigate }) => {
   const [shearForce, setShearForce] = useState(147); // Default to M2 (147 N)
   const [calculatedShearPressure, setCalculatedShearPressure] = useState(0);
 
+  // Safe access to globalData
+  const common = globalData?.common || {
+    backButton: "Back",
+    backTarget: "labs",
+    unitSelector: { metric: "Metric", imperial: "Imperial" },
+    units: {
+      pressure: { metric: "bar", imperial: "PSI" },
+      force: { metric: "N", imperial: "lbs" },
+    },
+  };
+
   const normalizeInput = (val) => {
     let num = 0;
     if (typeof val === "string") {
@@ -165,30 +176,32 @@ const EjectionChargeCalculator = ({ data, globalData, onNavigate }) => {
     <section className="max-w-4xl mx-auto px-4 py-12 dark:text-white">
       <div className="flex justify-between items-center mb-8">
         <BackButton
-          onClick={() => onNavigate(globalData.common.backTarget)}
-          label={globalData.common.backButton}
+          onClick={() => onNavigate(common.backTarget)}
+          label={common.backButton}
         />
 
         <div className="flex border-2 border-black dark:border-white">
           <button
             onClick={() => handleUnitChange("metric")}
+            aria-pressed={unitSystem === "metric"}
             className={`px-4 py-2 font-mono text-sm font-bold uppercase transition-colors ${
               unitSystem === "metric"
                 ? "bg-black text-white dark:bg-white dark:text-black"
                 : "bg-white text-black hover:bg-gray-100 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800"
             }`}
           >
-            {globalData.common.unitSelector.metric}
+            {common.unitSelector.metric}
           </button>
           <button
             onClick={() => handleUnitChange("imperial")}
+            aria-pressed={unitSystem === "imperial"}
             className={`px-4 py-2 font-mono text-sm font-bold uppercase transition-colors ${
               unitSystem === "imperial"
                 ? "bg-black text-white dark:bg-white dark:text-black"
                 : "bg-white text-black hover:bg-gray-100 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800"
             }`}
           >
-            {globalData.common.unitSelector.imperial}
+            {common.unitSelector.imperial}
           </button>
         </div>
       </div>
@@ -283,12 +296,8 @@ const EjectionChargeCalculator = ({ data, globalData, onNavigate }) => {
                     >
                       {opt.name} (
                       {unitSystem === "metric"
-                        ? opt.forceN +
-                          " " +
-                          globalData.common.units.force.metric
-                        : opt.forceLbs +
-                          " " +
-                          globalData.common.units.force.imperial}
+                        ? opt.forceN + " " + common.units.force.metric
+                        : opt.forceLbs + " " + common.units.force.imperial}
                       )
                     </option>
                   ))}
@@ -304,7 +313,7 @@ const EjectionChargeCalculator = ({ data, globalData, onNavigate }) => {
                   </span>
                   <span className="font-mono font-bold dark:text-white">
                     {parseFloat((calculatedShearPressure / 1.5).toFixed(1))}{" "}
-                    {globalData.common.units.pressure[unitSystem]}
+                    {common.units.pressure[unitSystem]}
                   </span>
                 </div>
                 <button
@@ -313,7 +322,7 @@ const EjectionChargeCalculator = ({ data, globalData, onNavigate }) => {
                 >
                   {data.inputs.shearPins.applyButton} (
                   {parseFloat(calculatedShearPressure.toFixed(1))}{" "}
-                  {globalData.common.units.pressure[unitSystem]})
+                  {common.units.pressure[unitSystem]})
                 </button>
               </div>
             )}

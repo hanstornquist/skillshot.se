@@ -12,6 +12,11 @@ const DxfSection = ({ data, globalData, onNavigate }) => {
   const containerRef = useRef(null);
   const [containerWidth, setContainerWidth] = useState(800);
 
+  const common = globalData?.common || {
+    backButton: "Back",
+    backTarget: "labs",
+  };
+
   useEffect(() => {
     const updateWidth = () => {
       if (containerRef.current) {
@@ -89,8 +94,8 @@ const DxfSection = ({ data, globalData, onNavigate }) => {
     <section className="max-w-5xl mx-auto px-4 py-12">
       <div className="flex justify-between items-center mb-8">
         <BackButton
-          onClick={() => onNavigate(globalData.common.backTarget)}
-          label={globalData.common.backButton}
+          onClick={() => onNavigate(common.backTarget)}
+          label={common.backButton}
         />
       </div>
 

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 
-function CvSection({ data }) {
+function CvSection({ data, globalData }) {
   const { project, employment, education, special } = data;
   const [activeSection, setActiveSection] = useState("");
+  const contentsLabel = globalData?.cv?.contentsLabel || "Contents";
 
   useEffect(() => {
     let observer;
@@ -91,7 +92,7 @@ function CvSection({ data }) {
         <div className="sm:col-span-4 border-b-2 border-black pb-8 sm:border-b-0 sm:border-r-2 sm:pb-0 sm:pr-8">
           <div className="sticky top-8">
             <div className="font-mono text-xs uppercase tracking-widest text-gray-500 mb-4">
-              Contents
+              {contentsLabel}
             </div>
             <nav className="space-y-6">
               {/* Projects Links */}

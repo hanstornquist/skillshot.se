@@ -24,5 +24,19 @@
         "imperial": "lbs"
       }
     }
+  },
+  "footer": {
+    "copyright": "SkillShot AB ©",
+    "opensInNewTab": "(opens in new tab)"
+  },
+  "header": {
+    "logoAlt": "SkillShot logo",
+    "navLabel": "Primary"
+  },
+  "cv": {
+    "contentsLabel": "Contents"
+  },
+  "labs": {
+    "openToolButton": "Open Tool"
   }
 }

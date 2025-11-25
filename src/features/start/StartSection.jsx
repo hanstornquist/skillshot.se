@@ -14,9 +14,9 @@ function StartSection({ data }) {
         <h2 className="mb-6 text-4xl font-black tracking-tighter text-black sm:text-6xl md:text-8xl uppercase break-words">
           {data.heading}
         </h2>
-        <h4 className="max-w-2xl text-2xl font-light leading-tight text-gray-800 sm:text-3xl font-mono">
+        <h3 className="max-w-2xl text-2xl font-light leading-tight text-gray-800 sm:text-3xl font-mono">
           {data.preamble}
-        </h4>
+        </h3>
       </div>
 
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-12">

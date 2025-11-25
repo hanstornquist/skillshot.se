@@ -1,7 +1,12 @@
 const baseUrl = import.meta.env.BASE_URL || "/";
 const logoSrc = `${baseUrl}images/SkillShot.png`;
 
-function Header({ tabs, activeTab, onTabChange, isScrolled }) {
+function Header({ tabs, activeTab, onTabChange, isScrolled, globalData }) {
+  const { logoAlt, navLabel } = globalData?.header || {
+    logoAlt: "SkillShot logo",
+    navLabel: "Primary",
+  };
+
   return (
     <header className="w-full border-b-2 border-black dark:border-gray-700 bg-white dark:bg-gray-900 z-50 flex-none transition-colors duration-200">
       <div className="mx-auto max-w-7xl px-4">
@@ -20,16 +25,17 @@ function Header({ tabs, activeTab, onTabChange, isScrolled }) {
                   isScrolled ? "grayscale" : ""
                 }`}
                 src={logoSrc}
-                alt="SkillShot logo"
+                alt={logoAlt}
               />
             </a>
           </div>
-          <nav aria-label="Primary">
+          <nav aria-label={navLabel}>
             <ul className="flex flex-wrap justify-center gap-1 sm:justify-end font-mono text-sm uppercase tracking-wider">
               {tabs.map((tab) => (
                 <li key={tab.id}>
                   <a
                     href={`#${tab.id}`}
+                    aria-current={tab.id === activeTab ? "page" : undefined}
                     className={`block px-4 py-2 transition-all ${
                       tab.id === activeTab
                         ? "bg-black text-white font-bold dark:bg-white dark:text-black"

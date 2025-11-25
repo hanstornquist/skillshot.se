@@ -6,7 +6,7 @@ const MetaManager = ({ activeTab, pageConfig, globalData }) => {
     if (!page) return;
 
     const meta = page.data?.meta || {};
-    const defaults = globalData.meta || {};
+    const defaults = globalData?.meta || {};
 
     const title = meta.title || defaults.siteName || "SkillShot AB";
     const description =
